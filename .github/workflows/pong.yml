@@ -1,4 +1,4 @@
-name: Remote Dispatch Action Responder
+name: Remopte Dispatch Action Responder
  
 on: [repository_dispatch]
 
