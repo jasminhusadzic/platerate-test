@@ -40,24 +40,22 @@ jobs:
         npm ci
         npm run build --if-present
         ./node_modules/.bin/wdio wdio.conf.js
-        - name: Send mail
-    uses: dawidd6/action-send-mail@v2
-    with:
-      server_address: smtp.gmail.com
-      server_port: 465
-      username: ${{secrets.MAIL_USERNAME}}
-      password: ${{secrets.MAIL_PASSWORD}}
-      subject: Github Actions job result
-      # Literal body:
-      body: Build job of ${{github.repository}} completed successfully!
-      # Read file contents as body:
-      body: file://README.md
-      to: jasmin.husadzic@gmail.com
-      from: Luke Skywalker # <user@example.com>
-      # Optional content type (defaults to text/plain):
-      content_type: text/html
-      # Optional attachments:
-      attachments: attachments.zip,git.diff,./output/report.html
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v2
+      with:
+       server_address: smtp.gmail.com
+       server_port: 465
+       username: ${{secrets.MAIL_USERNAME}}
+       password: ${{secrets.MAIL_PASSWORD}}
+       subject: Github Actions job result
+       # Literal body:
+       body: Build job of ${{github.repository}} completed successfully!
+       to: jasmin.husadzic@gmail.com
+       from: Luke Skywalker # <user@example.com>
+       # Optional content type (defaults to text/plain):
+       content_type: text/html
+       # Optional attachments:
+       attachments: attachments.zip,git.diff,./output/report.html
 
       env:
         CI: true
