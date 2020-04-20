@@ -1,7 +1,6 @@
 name: Remopte Dispatch Action Responder
  
-on: [repository_dispatch]
-
+on: [repository_dispatch, push]
 jobs:
   ping-pong:
     runs-on: ubuntu-latest
