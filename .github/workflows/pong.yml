@@ -55,7 +55,7 @@ jobs:
        # Optional content type (defaults to text/plain):
        content_type: text/html
        # Optional attachments:
-       attachments: attachments.zip,git.diff,./output/report.html
+       attachments: ./output/report.html
 
       env:
         CI: true
