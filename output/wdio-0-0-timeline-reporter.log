@@ -1,6 +1,6 @@
 {
-  "start": "2020-04-20T11:17:53.335Z",
-  "end": "2020-04-20T11:34:49.343Z",
+  "start": "2020-04-20T18:05:50.627Z",
+  "end": "2020-04-20T18:06:14.067Z",
   "capabilities": {
     "acceptInsecureCerts": false,
     "acceptSslCerts": false,
@@ -9,12 +9,12 @@
     "browserName": "chrome",
     "chrome": {
       "chromedriverVersion": "2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a)",
-      "userDataDir": "C:\\Users\\Jaso\\AppData\\Local\\Temp\\scoped_dir20416_87"
+      "userDataDir": "C:\\Users\\Jaso\\AppData\\Local\\Temp\\scoped_dir16600_4411"
     },
     "cssSelectorsEnabled": true,
     "databaseEnabled": false,
     "goog:chromeOptions": {
-      "debuggerAddress": "localhost:51118"
+      "debuggerAddress": "localhost:56486"
     },
     "handlesAlerts": true,
     "hasTouchScreen": false,
@@ -32,130 +32,48 @@
     "unexpectedAlertBehaviour": "",
     "version": "81.0.4044.113",
     "webStorageEnabled": true,
-    "webdriver.remote.sessionid": "85166ebc5880f130566f36012e4b0a21",
-    "sessionId": "85166ebc5880f130566f36012e4b0a21"
+    "webdriver.remote.sessionid": "65a67287e9faa66f617a71f420918297",
+    "sessionId": "65a67287e9faa66f617a71f420918297"
   },
   "baseUrl": "https://test.platerate.guru/",
   "framework": "jasmine",
   "mochaOpts": {
     "timeout": 10000
   },
-  "duration": 1016008,
+  "duration": 23440,
   "suites": [
     {
-      "title": "home page suite",
-      "duration": 1015943,
-      "start": "2020-04-20T11:17:53.349Z",
-      "end": "2020-04-20T11:34:49.292Z",
+      "title": "login suite",
+      "duration": 23335,
+      "start": "2020-04-20T18:05:50.636Z",
+      "end": "2020-04-20T18:06:13.971Z",
       "tests": [
         {
-          "title": "search chicken and check load time when user is not logged in",
-          "start": "2020-04-20T11:17:53.354Z",
-          "end": "2020-04-20T11:20:17.790Z",
-          "duration": 144436,
-          "state": "failed",
-          "screenshots": [],
-          "error": {
-            "message": "Error: waitUntil condition failed with the following reason: Can't call getText on element with selector \"#venucountDiv\" because element wasn't found",
-            "stack": "Error: waitUntil condition failed with the following reason: Can't call getText on element with selector \"#venucountDiv\" because element wasn't found\n    at HomePage.search (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\page_objects\\pages\\/HomePage.js:35:17)\n    at HomePage.getSearchDuration (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\page_objects\\pages\\/HomePage.js:49:18)\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\test\\/home.spec.js:20:33)"
-          }
-        },
-        {
-          "title": "search rice after we search for chicken and check load time when user is not logged in",
-          "start": "2020-04-20T11:20:17.798Z",
-          "end": "2020-04-20T11:22:25.087Z",
-          "duration": 127289,
-          "state": "failed",
-          "screenshots": [],
-          "error": {
-            "message": "Error: waitUntil condition failed with the following reason: Can't call getText on element with selector \"#venucountDiv\" because element wasn't found",
-            "stack": "Error: waitUntil condition failed with the following reason: Can't call getText on element with selector \"#venucountDiv\" because element wasn't found\n    at HomePage.search (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\page_objects\\pages\\/HomePage.js:35:17)\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\test\\/home.spec.js:29:18)"
-          }
-        },
-        {
-          "title": "search chicken, search rice and search chicken again and check load time for last search when user is not logged in",
-          "start": "2020-04-20T11:22:25.088Z",
-          "end": "2020-04-20T11:24:34.527Z",
-          "duration": 129439,
-          "state": "failed",
-          "screenshots": [],
-          "error": {
-            "message": "Error: waitUntil condition failed with the following reason: Can't call getText on element with selector \"#venucountDiv\" because element wasn't found",
-            "stack": "Error: waitUntil condition failed with the following reason: Can't call getText on element with selector \"#venucountDiv\" because element wasn't found\n    at HomePage.search (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\page_objects\\pages\\/HomePage.js:35:17)\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\test\\/home.spec.js:38:18)"
-          }
-        },
-        {
-          "title": "search beef and check load time when user is not logged in",
-          "start": "2020-04-20T11:24:34.530Z",
-          "end": "2020-04-20T11:26:45.371Z",
-          "duration": 130841,
-          "state": "failed",
-          "screenshots": [],
-          "error": {
-            "message": "Error: waitUntil condition failed with the following reason: Can't call getText on element with selector \"#venucountDiv\" because element wasn't found",
-            "stack": "Error: waitUntil condition failed with the following reason: Can't call getText on element with selector \"#venucountDiv\" because element wasn't found\n    at HomePage.search (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\page_objects\\pages\\/HomePage.js:35:17)\n    at HomePage.getSearchDuration (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\page_objects\\pages\\/HomePage.js:49:18)\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\test\\/home.spec.js:49:33)"
-          }
-        },
-        {
-          "title": "search chicken and check load time when user is logged in",
-          "start": "2020-04-20T11:26:45.372Z",
-          "end": "2020-04-20T11:29:50.377Z",
-          "duration": 185005,
-          "state": "failed",
-          "screenshots": [],
-          "error": {
-            "message": "Error: waitUntil condition failed with the following reason: Can't call getText on element with selector \"#venucountDiv\" because element wasn't found",
-            "stack": "Error: waitUntil condition failed with the following reason: Can't call getText on element with selector \"#venucountDiv\" because element wasn't found\n    at HomePage.search (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\page_objects\\pages\\/HomePage.js:35:17)\n    at HomePage.getSearchDuration (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\page_objects\\pages\\/HomePage.js:49:18)\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\test\\/home.spec.js:65:33)"
-          }
-        },
-        {
-          "title": "search rice after we search for chicken and check load time when user is logged in",
-          "start": "2020-04-20T11:29:50.378Z",
-          "end": "2020-04-20T11:32:06.841Z",
-          "duration": 136463,
-          "state": "failed",
-          "screenshots": [],
-          "error": {
-            "message": "Error: waitUntil condition failed with the following reason: Can't call getText on element with selector \"#venucountDiv\" because element wasn't found",
-            "stack": "Error: waitUntil condition failed with the following reason: Can't call getText on element with selector \"#venucountDiv\" because element wasn't found\n    at HomePage.search (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\page_objects\\pages\\/HomePage.js:35:17)\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\test\\/home.spec.js:78:18)"
-          }
-        },
-        {
-          "title": "search chicken, search rice and search chicken again and check load time for last search when user is logged in",
-          "start": "2020-04-20T11:32:06.843Z",
-          "end": "2020-04-20T11:34:27.917Z",
-          "duration": 141074,
-          "state": "failed",
-          "screenshots": [],
-          "error": {
-            "message": "Error: waitUntil condition failed with the following reason: Can't call getText on element with selector \"#venucountDiv\" because element wasn't found",
-            "stack": "Error: waitUntil condition failed with the following reason: Can't call getText on element with selector \"#venucountDiv\" because element wasn't found\n    at HomePage.search (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\page_objects\\pages\\/HomePage.js:35:17)\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\test\\/home.spec.js:92:18)"
-          }
-        },
-        {
-          "title": "search beef and check load time when user is logged in",
-          "start": "2020-04-20T11:34:27.918Z",
-          "end": "2020-04-20T11:34:49.291Z",
-          "duration": 21373,
+          "title": "login with invalid credentials error message should appear",
+          "start": "2020-04-20T18:05:50.638Z",
+          "end": "2020-04-20T18:06:05.798Z",
+          "duration": 15160,
           "state": "passed",
-          "screenshots": [],
-          "context": [
-            {
-              "title": "Search duration is",
-              "value": "2.943 seconds"
-            }
-          ]
+          "screenshots": []
+        },
+        {
+          "title": "login with valid credentials home page should appear with shopping cart in top right corner",
+          "start": "2020-04-20T18:06:05.799Z",
+          "end": "2020-04-20T18:06:13.970Z",
+          "duration": 8171,
+          "state": "passed",
+          "screenshots": []
         }
       ],
       "hooks": []
     }
   ],
   "specs": [
-    "C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\test\\home.spec.js"
+    "C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\login.spec.js"
   ],
   "state": {
-    "passed": 1,
-    "failed": 7,
+    "passed": 2,
+    "failed": 0,
     "skipped": 0
   }
 }
