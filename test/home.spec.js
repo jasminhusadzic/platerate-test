@@ -18,7 +18,7 @@ describe("home page suite", ()=>{
 
     it("search chicken and check load time when user is not logged in", ()=>{
         let duration = HomePage.getSearchDuration('chicken');
-        expect(duration).toBeLessThanOrEqual(60);
+        expect(duration).toBeLessThanOrEqual(1);
         TimelineReporter.addContext({
             title: 'Search duration is',
             value: duration.toString() + " seconds"
