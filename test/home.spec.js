@@ -16,24 +16,24 @@ describe("home page suite", ()=>{
     //     expect(HomePage.filterHeading.getText()).toContain("FILTER");
     // })
 
-    // it("search chicken and check load time when user is not logged in", ()=>{
-    //     let duration = HomePage.getSearchDuration('chicken');
-    //     expect(duration).toBeLessThanOrEqual(60);
-    //     TimelineReporter.addContext({
-    //         title: 'Search duration is',
-    //         value: duration.toString() + " seconds"
-    //       });
-    // })
+    it("search chicken and check load time when user is not logged in", ()=>{
+        let duration = HomePage.getSearchDuration('chicken');
+        expect(duration).toBeLessThanOrEqual(60);
+        TimelineReporter.addContext({
+            title: 'Search duration is',
+            value: duration.toString() + " seconds"
+          });
+    })
 
-    // it("search rice after we search for chicken and check load time when user is not logged in", ()=>{
-    //     HomePage.search('chicken');
-    //     let duration = HomePage.getSearchDuration('rice');
-    //     expect(duration).toBeLessThanOrEqual(60);
-    //     TimelineReporter.addContext({
-    //         title: 'Search duration is',
-    //         value: duration.toString() + " seconds"
-    //       });
-    // })
+    it("search rice after we search for chicken and check load time when user is not logged in", ()=>{
+        HomePage.search('chicken');
+        let duration = HomePage.getSearchDuration('rice');
+        expect(duration).toBeLessThanOrEqual(60);
+        TimelineReporter.addContext({
+            title: 'Search duration is',
+            value: duration.toString() + " seconds"
+          });
+    })
     // it("search chicken, search rice and search chicken again and check load time for last search when user is not logged in", ()=>{
     //     HomePage.search('chicken');
     //     HomePage.search('rice');
