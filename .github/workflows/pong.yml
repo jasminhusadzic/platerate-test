@@ -47,6 +47,7 @@ jobs:
           path: ./output/report.html
      
   email:
+   needs: [build] 
    runs-on: ubuntu-latest
    steps:
     - name: Download math result for job 2
