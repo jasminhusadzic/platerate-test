@@ -40,7 +40,19 @@ jobs:
         npm ci
         npm run build --if-present
         ./node_modules/.bin/wdio wdio.conf.js
-      if: failure() || success()
+    - name: Upload math result for job 1
+      uses: actions/upload-artifact@v1
+      with:
+          name: report
+          path: ./output/report.html
+     
+  email:
+   runs-on: ubuntu-latest
+   steps:
+    - name: Download math result for job 2
+      uses: actions/download-artifact@v1
+      with:
+          name: report
     - name: Send mail
       uses: dawidd6/action-send-mail@v2
       with:
@@ -56,7 +68,7 @@ jobs:
        # Optional content type (defaults to text/plain):
        content_type: text/html
        # Optional attachments:
-       attachments: ./output/report.html
+       attachments: report/report.html
 
       env:
         CI: true
