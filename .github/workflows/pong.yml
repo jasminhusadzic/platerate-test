@@ -40,9 +40,6 @@ jobs:
         npm ci
         npm run build --if-present
         ./node_modules/.bin/wdio wdio.conf.js
-  email:
-   runs-on: ubuntu-latest
-   steps:
     - name: Send mail
       uses: dawidd6/action-send-mail@v2
       with:
