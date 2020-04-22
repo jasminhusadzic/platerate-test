@@ -69,8 +69,7 @@ jobs:
        password: ${{secrets.MAIL_PASSWORD}}
        subject: Github Actions job result
        # Literal body:
-       body: Report of executing e2e tests on ${{github.repository}} genereted!
-             file://README.md
+       body: file://README.md
        to: jasmin.husadzic@gmail.com
        from: QA Automation Department # <user@example.com>
        # Optional content type (defaults to text/plain):
