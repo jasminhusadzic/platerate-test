@@ -1,0 +1,183 @@
+{
+  "start": "2020-04-22T17:34:55.586Z",
+  "end": "2020-04-22T17:50:36.711Z",
+  "capabilities": {
+    "acceptInsecureCerts": false,
+    "acceptSslCerts": false,
+    "applicationCacheEnabled": false,
+    "browserConnectionEnabled": false,
+    "browserName": "chrome",
+    "chrome": {
+      "chromedriverVersion": "2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a)",
+      "userDataDir": "C:\\Users\\Jaso\\AppData\\Local\\Temp\\scoped_dir17580_3174"
+    },
+    "cssSelectorsEnabled": true,
+    "databaseEnabled": false,
+    "goog:chromeOptions": {
+      "debuggerAddress": "localhost:60724"
+    },
+    "handlesAlerts": true,
+    "hasTouchScreen": false,
+    "javascriptEnabled": true,
+    "locationContextEnabled": true,
+    "mobileEmulationEnabled": false,
+    "nativeEvents": true,
+    "networkConnectionEnabled": false,
+    "pageLoadStrategy": "normal",
+    "platform": "Windows NT",
+    "rotatable": false,
+    "setWindowRect": true,
+    "takesHeapSnapshot": true,
+    "takesScreenshot": true,
+    "unexpectedAlertBehaviour": "",
+    "version": "81.0.4044.113",
+    "webStorageEnabled": true,
+    "webdriver.remote.sessionid": "6ca645103bb0fbb2babf57449f9541e1",
+    "sessionId": "6ca645103bb0fbb2babf57449f9541e1"
+  },
+  "baseUrl": "https://test.platerate.guru/",
+  "framework": "jasmine",
+  "mochaOpts": {
+    "timeout": 10000
+  },
+  "duration": 941125,
+  "suites": [
+    {
+      "title": "home page suite",
+      "duration": 940953,
+      "start": "2020-04-22T17:34:55.595Z",
+      "end": "2020-04-22T17:50:36.548Z",
+      "tests": [
+        {
+          "title": "search chicken and check load time when user is not logged in",
+          "start": "2020-04-22T17:34:55.597Z",
+          "end": "2020-04-22T17:35:15.020Z",
+          "duration": 19423,
+          "state": "passed",
+          "screenshots": [],
+          "context": [
+            {
+              "title": "Search duration is",
+              "value": "5.405 seconds"
+            }
+          ]
+        },
+        {
+          "title": "search rice after we search for chicken and check load time when user is not logged in",
+          "start": "2020-04-22T17:35:15.021Z",
+          "end": "2020-04-22T17:35:35.112Z",
+          "duration": 20091,
+          "state": "passed",
+          "screenshots": [],
+          "context": [
+            {
+              "title": "Search duration is",
+              "value": "9.181 seconds"
+            }
+          ]
+        },
+        {
+          "title": "search chicken, search rice and search chicken again and check load time for last search when user is not logged in",
+          "start": "2020-04-22T17:35:35.113Z",
+          "end": "2020-04-22T17:37:37.363Z",
+          "duration": 122250,
+          "state": "failed",
+          "screenshots": [],
+          "context": [
+            {
+              "title": "Search duration is",
+              "value": "63.944 seconds"
+            }
+          ],
+          "error": {
+            "message": "Expected 63.944 to be less than or equal 60.",
+            "stack": "Error: Expected 63.944 to be less than or equal 60.\n    at <Jasmine>\n    at <Jasmine>\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\/home.spec.js:35:26)"
+          }
+        },
+        {
+          "title": "search beef and check load time when user is not logged in",
+          "start": "2020-04-22T17:37:37.367Z",
+          "end": "2020-04-22T17:38:02.691Z",
+          "duration": 25324,
+          "state": "passed",
+          "screenshots": [],
+          "context": [
+            "WARNING",
+            {
+              "title": "Search duration is",
+              "value": "11.81 seconds"
+            }
+          ]
+        },
+        {
+          "title": "search chicken and check load time when user is logged in",
+          "start": "2020-04-22T17:38:02.691Z",
+          "end": "2020-04-22T17:40:10.113Z",
+          "duration": 127422,
+          "state": "failed",
+          "screenshots": [],
+          "context": [
+            {
+              "title": "Search duration is",
+              "value": "77.441 seconds"
+            }
+          ],
+          "error": {
+            "message": "Expected 77.441 to be less than or equal 60.",
+            "stack": "Error: Expected 77.441 to be less than or equal 60.\n    at <Jasmine>\n    at <Jasmine>\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\/home.spec.js:51:26)"
+          }
+        },
+        {
+          "title": "search rice after we search for chicken and check load time when user is logged in",
+          "start": "2020-04-22T17:40:10.113Z",
+          "end": "2020-04-22T17:42:14.354Z",
+          "duration": 124241,
+          "state": "passed",
+          "screenshots": [],
+          "context": [
+            "WARNING",
+            {
+              "title": "Search duration is",
+              "value": "44.989 seconds"
+            }
+          ]
+        },
+        {
+          "title": "search chicken, search rice and search chicken again and check load time for last search when user is logged in",
+          "start": "2020-04-22T17:42:14.357Z",
+          "end": "2020-04-22T17:48:22.321Z",
+          "duration": 367964,
+          "state": "failed",
+          "screenshots": [],
+          "error": {
+            "message": "Error: chicken did not appear before 2 minutes",
+            "stack": "Error: chicken did not appear before 2 minutes\n    at HomePage.search (C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\page_objects\\pages\\/HomePage.js:37:17)\n    at HomePage.getSearchDuration (C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\page_objects\\pages\\/HomePage.js:51:18)\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\/home.spec.js:73:33)"
+          }
+        },
+        {
+          "title": "search beef and check load time when user is logged in",
+          "start": "2020-04-22T17:48:22.324Z",
+          "end": "2020-04-22T17:50:36.546Z",
+          "duration": 134222,
+          "state": "passed",
+          "screenshots": [],
+          "context": [
+            {
+              "title": "Search duration is",
+              "value": "7.626 seconds"
+            }
+          ]
+        }
+      ],
+      "hooks": []
+    }
+  ],
+  "specs": [
+    "C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\home.spec.js"
+  ],
+  "state": {
+    "passed": 5,
+    "failed": 3,
+    "skipped": 0
+  }
+}
