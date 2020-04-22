@@ -18,7 +18,7 @@ describe("home page suite", ()=>{
 
     it("search chicken and check load time when user is not logged in", ()=>{
         let duration = HomePage.getSearchDuration('chicken');
-        expect(duration).toBeLessThanOrEqual(1);
+        expect(duration).toBeLessThanOrEqual(60);
         TimelineReporter.addContext({
             title: 'Search duration is',
             value: duration.toString() + " seconds"
@@ -78,6 +78,9 @@ describe("home page suite", ()=>{
         HomePage.search('chicken');
         let duration = HomePage.getSearchDuration('rice');
         expect(duration).toBeLessThanOrEqual(60);
+        if(duration>=10){
+            TimelineReporter.addContext('WARNING');
+        }
         TimelineReporter.addContext({
             title: 'Search duration is',
             value: duration.toString() + " seconds"
