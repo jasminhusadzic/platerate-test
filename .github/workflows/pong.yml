@@ -69,9 +69,11 @@ jobs:
        password: ${{secrets.MAIL_PASSWORD}}
        subject: Github Actions job result
        # Literal body:
-       body: Build job of ${{github.repository}} completed successfully!
+       body: | 
+            Report of executing e2e tests on ${{github.repository}} genereted!
+            file://report/report.html
        to: jasmin.husadzic@gmail.com
-       from: Luke Skywalker # <user@example.com>
+       from: QA Automation Department # <user@example.com>
        # Optional content type (defaults to text/plain):
        content_type: text/html
        # Optional attachments:
