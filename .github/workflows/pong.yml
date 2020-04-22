@@ -1,6 +1,10 @@
 name: Remote Dispatch Action Responder
  
-on: [repository_dispatch, push]
+on: 
+ repository_dispatch:
+ push:
+  branches: 
+   - dev
 jobs:
   ping-pong:
     runs-on: ubuntu-latest
@@ -48,11 +52,11 @@ jobs:
           path: ./output/report.html
      
   email:
+   if: always()
    needs: [build] 
    runs-on: ubuntu-latest
    steps:
     - name: Download report
-      if: always()
       uses: actions/download-artifact@v1
       with:
           name: report
