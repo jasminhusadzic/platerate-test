@@ -64,7 +64,7 @@ exports.config = {
         //
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['incognito','headless', 'disable-gpu'],
+            args: ['incognito'/*,'headless', 'disable-gpu'*/],
             },
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
@@ -140,7 +140,7 @@ exports.config = {
     reporters: ['spec', 
     ['timeline', { 
         outputDir: './output',
-        fileName: 'report.html',
+        fileName:'report.html',
         embedImages: true,
         images : {
             quality: 80,

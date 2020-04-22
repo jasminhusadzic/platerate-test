@@ -13,7 +13,8 @@ class HomePage extends Page {
     get acceptCoockiesButton(){return $("#acceptCookies")};
     get neverPlay(){return $('strong*=play again')};
     get searchInput(){return $('#search')};
-    get resultInfoHeader(){return $('#venucountDiv')};
+    get locationInput(){return $("//input[@name='locationinput']")};
+    get resultInfoHeader(){return $('#menucountDiv')};
     get searchButton(){return $('#searchbutton')};
     get loginButton(){return $('button*=Login/Register')};
 
@@ -29,8 +30,9 @@ class HomePage extends Page {
         this.neverPlay.click();
     }
 
-    search(searchTerm){
+    search(searchTerm, location){
         this.searchInput.setValue(searchTerm);
+        this.locationInput.setValue(location)
         this.searchButton.click();
         browser.waitUntil(
             ()=> this.resultInfoHeader.getText().includes(searchTerm),
@@ -42,11 +44,11 @@ class HomePage extends Page {
     }
 
 
-    getSearchDuration(searchTerm){
+    getSearchDuration(searchTerm, location){
         let startTime = new Date();
         startTime.getTime();
         if(searchTerm != null){
-            this.search(searchTerm);
+            this.search(searchTerm, location);
         }
         let endTime = new Date;
         endTime.getTime();

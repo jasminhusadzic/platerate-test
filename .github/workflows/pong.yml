@@ -69,7 +69,7 @@ jobs:
        password: ${{secrets.MAIL_PASSWORD}}
        subject: Test Automation Report
        # Literal body:
-       body: file://report/report.html
+       body: Test automation report in attachments!
        to: jasmin.husadzic@gmail.com
        from: QA Automation Department # <user@example.com>
        # Optional content type (defaults to text/plain):
