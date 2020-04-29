@@ -2,7 +2,7 @@ name: Scheduled Reports
 
 on:
   schedule:
-    - cron: '0 6 * * *'
+    - cron: '00 12 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -58,7 +58,7 @@ jobs:
        subject: Test Automation Report
        # Literal body:
        body: Test automation report in attachments!
-       to: jasmin.husadzic@gmail.com
+       to: jasmin.husadzic@gmail.com, qvnwork@gmail.com
        from: PlateRate QA Automation Department # <user@example.com>
        # Optional content type (defaults to text/plain):
        content_type: text/html
