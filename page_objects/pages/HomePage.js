@@ -1,5 +1,4 @@
 import Page from '../Page'
-import { start } from 'chromedriver';
  
 class HomePage extends Page {
 
@@ -14,9 +13,11 @@ class HomePage extends Page {
     get neverPlay(){return $('strong*=play again')};
     get searchInput(){return $('#search')};
     get locationInput(){return $("//input[@name='locationinput']")};
-    get resultInfoHeader(){return $('#menucountDiv')};
+    get resultInfoHeader(){return $("//div[@id='search_results_div']//div[contains(@style, 'display: block')]")};
     get searchButton(){return $('#searchbutton')};
     get loginButton(){return $('button*=Login/Register')};
+    get restaurantTab(){return $("#restaurant")};
+    get foodAndDrinkTab(){return $("#menuitem")};
 
     clickOnSlider(){
         this.filterIcon.click();
@@ -28,6 +29,14 @@ class HomePage extends Page {
 
     clickNeverPlay(){
         this.neverPlay.click();
+    }
+
+    clickOnRestaurantTab(){
+        this.restaurantTab.click();
+    }
+
+    clickOnFoodAndDrinkTab(){
+        this.foodAndDrinkTab.click();
     }
 
     search(searchTerm, location){

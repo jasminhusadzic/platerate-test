@@ -1,93 +1,144 @@
 import HomePage from '../page_objects/pages/HomePage';
 import LoginPage from '../page_objects/pages/LoginPage';
 import ProfilePage from '../page_objects/pages/ProfilePage';
-
-const TimelineReporter = require('wdio-timeline-reporter').default;
+import LoginData from '../data/login.data';
+import SearchData from '../data/search.data';
 
 describe("home page suite", ()=>{
     beforeEach(()=>{
         HomePage.open();
-        HomePage.acceptCoockiesButton.isDisplayed() ? HomePage.acceptCoockies() : console.log('nema kukija');
-        HomePage.neverPlay.isDisplayed() ? HomePage.clickNeverPlay() : console.log('nema neverplay');    
+        if(HomePage.acceptCoockiesButton.isDisplayed())HomePage.acceptCoockies();
+        if(HomePage.neverPlay.isDisplayed())HomePage.clickNeverPlay();    
     });
 
-    // it("check food filter is opened on click", ()=>{
-    //     HomePage.clickOnSlider();
-    //     expect(HomePage.filterHeading.getText()).toContain("FILTER");
-    // })
+    describe("search when user not logged", ()=>{
 
-    it("search chicken and check load time when user is not logged in", ()=>{
-        let duration = HomePage.getSearchDuration('chicken', 'New York');
-        expect(duration).toBeLessThanOrEqual(60);
-        HomePage.reportDuration(duration);
+        it("search chicken from homepage and check load time", ()=>{
+            let duration = HomePage.getSearchDuration(SearchData.chicken, SearchData.city);
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+        it("search rice from result page and check load time", ()=>{
+            HomePage.search(SearchData.chicken, SearchData.city);
+            let duration = HomePage.getSearchDuration(SearchData.rice, SearchData.city);
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+
+        it("switch tab to Restaurant then search thai and check load time", ()=>{
+            HomePage.search(SearchData.chicken, SearchData.city);
+            HomePage.clickOnRestaurantTab();
+            let duration = HomePage.getSearchDuration(SearchData.thai, SearchData.city);
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+
+        it("switch tab to Food and Drink then search beef and check load time", ()=>{
+            HomePage.search(SearchData.chicken, SearchData.city);
+            HomePage.clickOnRestaurantTab();
+            HomePage.search(SearchData.thai, SearchData.city);
+            HomePage.clickOnFoodAndDrinkTab();
+            let duration = HomePage.getSearchDuration(SearchData.beef, SearchData.city);
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+    
+        it("search rice from results and check load time", ()=>{
+            HomePage.search(SearchData.chicken, SearchData.city);
+            let duration = HomePage.getSearchDuration(SearchData.rice, SearchData.city);
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+        it("search chicken then search rice and then search chicken and check load time", ()=>{
+            HomePage.search(SearchData.chicken, SearchData.city);
+            HomePage.search(SearchData.rice, SearchData.city);
+            let duration = HomePage.getSearchDuration(SearchData.chicken, SearchData.city);
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+    
+        it("search beef from homepage and check load time", ()=>{
+            let duration = HomePage.getSearchDuration(SearchData.beef, SearchData.city);
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+
+
     })
 
-    it("search rice after we search for chicken and check load time when user is not logged in", ()=>{
-        HomePage.search('chicken', 'New York');
-        let duration = HomePage.getSearchDuration('rice', 'New York');
-        expect(duration).toBeLessThanOrEqual(60);
-        HomePage.reportDuration(duration);
+    describe("search when user is logged", ()=>{
+        beforeEach(()=>{
+            LoginPage.open();
+            LoginPage.login(LoginData.email, LoginData.password);
+            LoginPage.waitForCart();
+            expect(HomePage.cart).toBeDisplayed;
+        });
+        
+        it("search chicken from homepage and check load time", ()=>{
+            let duration = HomePage.getSearchDuration(SearchData.chicken, SearchData.city);
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+        it("search rice from result page and check load time", ()=>{
+            HomePage.search(SearchData.chicken, SearchData.city);
+            let duration = HomePage.getSearchDuration(SearchData.rice, SearchData.city);
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+
+        it("switch tab to Restaurant then search thai and check load time", ()=>{
+            HomePage.search(SearchData.chicken, SearchData.city);
+            HomePage.clickOnRestaurantTab();
+            let duration = HomePage.getSearchDuration(SearchData.thai, SearchData.city);
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+
+        it("switch tab to Food and Drink then search beef and check load time", ()=>{
+            HomePage.search(SearchData.chicken, SearchData.city);
+            HomePage.clickOnRestaurantTab();
+            HomePage.search(SearchData.thai, SearchData.city);
+            HomePage.clickOnFoodAndDrinkTab();
+            let duration = HomePage.getSearchDuration(SearchData.beef, SearchData.city);
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+    
+        it("search chicken from results and check load time", ()=>{
+            HomePage.search(SearchData.rice, SearchData.city);
+            let duration = HomePage.getSearchDuration(SearchData.chicken, SearchData.city);
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+        it("search chicken then search rice and then search chicken and check load time", ()=>{
+            HomePage.search(SearchData.chicken, SearchData.city);
+            HomePage.search(SearchData.rice, SearchData.city);
+            let duration = HomePage.getSearchDuration(SearchData.chicken, SearchData.city);
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+    
+        it("search beef from homepage and check load time", ()=>{
+            let duration = HomePage.getSearchDuration(SearchData.beef, SearchData.city);
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+
+        afterEach(()=>{
+            if(HomePage.cart.isDisplayed()){
+                ProfilePage.logout();
+            } 
+        });
+
     })
-    it("search chicken, search rice and search chicken again and check load time for last search when user is not logged in", ()=>{
-        HomePage.search('chicken', 'New York');
-        HomePage.search('rice', 'New York');
-        let duration = HomePage.getSearchDuration('chicken', 'New York');
-        expect(duration).toBeLessThanOrEqual(60);
-        HomePage.reportDuration(duration);
+    
+    describe("food filter", ()=>{
+
+        it("check food filter is opened on click", ()=>{
+            HomePage.clickOnSlider();
+            expect(HomePage.filterHeading.getText()).toContain("FILTER");
+        })
     })
 
-    it("search beef and check load time when user is not logged in", ()=>{
-        let duration = HomePage.getSearchDuration('beef', 'New York');
-        expect(duration).toBeLessThanOrEqual(60);
-        HomePage.reportDuration(duration);
-    })
-
-    it("search chicken and check load time when user is logged in", ()=>{
-        LoginPage.open();
-        LoginPage.login('jasmin.husadzic@gmail.com', 'test123');
-        LoginPage.waitForCart();
-        expect(HomePage.cart).toBeDisplayed;
-        let duration = HomePage.getSearchDuration('chicken', 'New York');
-        expect(duration).toBeLessThanOrEqual(60);
-        HomePage.reportDuration(duration);
-    })
-
-    it("search rice after we search for chicken and check load time when user is logged in", ()=>{
-        LoginPage.open();
-        LoginPage.login('jasmin.husadzic@gmail.com', 'test123');
-        LoginPage.waitForCart();  
-        expect(HomePage.cart).toBeDisplayed;
-        HomePage.search('chicken', 'New York');
-        let duration = HomePage.getSearchDuration('rice', 'New York');
-        expect(duration).toBeLessThanOrEqual(60);
-        HomePage.reportDuration(duration);
-    })
-
-    it("search chicken, search rice and search chicken again and check load time for last search when user is logged in", ()=>{
-        LoginPage.open();
-        LoginPage.login('jasmin.husadzic@gmail.com', 'test123');
-        LoginPage.waitForCart();
-        expect(HomePage.cart).toBeDisplayed;
-        HomePage.search('chicken', 'New York');
-        HomePage.search('rice', 'New York');
-        let duration = HomePage.getSearchDuration('chicken', 'New York');
-        expect(duration).toBeLessThanOrEqual(60);
-        HomePage.reportDuration(duration);
-    })
-
-    it("search beef and check load time when user is logged in", ()=>{
-        LoginPage.open();
-        LoginPage.login('jasmin.husadzic@gmail.com', 'test123');  
-        expect(HomePage.cart).toBeDisplayed;
-        let duration = HomePage.getSearchDuration('beef', 'New York');
-        expect(duration).toBeLessThanOrEqual(60);
-        HomePage.reportDuration(duration);
-    })
-
-    afterEach(()=>{
-        if(HomePage.cart.isDisplayed()){
-            ProfilePage.logout();
-        } 
-    })
-
+    
 })
