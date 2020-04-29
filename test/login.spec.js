@@ -5,7 +5,7 @@ import HomePage from '../page_objects/pages/HomePage';
 describe('login suite', () => {
 
     beforeEach(()=>{
-        LoginPage.open();  
+          LoginPage.open();  
     });
 
     it('login with invalid credentials error message should appear', () => {   

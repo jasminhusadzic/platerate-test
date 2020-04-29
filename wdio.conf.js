@@ -1,5 +1,18 @@
 const { TimelineService } = require('wdio-timeline-reporter/timeline-service');
 
+let baseUrl = "https://platerate.com";
+
+const ENV = process.env.ENV;
+
+switch(ENV){
+    case 'test':
+        baseUrl = "https://test.platerate.guru";
+        break;
+    case 'staging':
+        baseUrl = "https://staging.platerate.guru";
+        break;
+}
+
 exports.config = {
     //
     // ====================
@@ -31,6 +44,9 @@ exports.config = {
         ],
         login: [
             './test/login.spec.js'
+        ],
+        profile: [
+            './test/profile.spec.js'
         ]
     },
     //
@@ -64,7 +80,7 @@ exports.config = {
         //
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['incognito'/*,'headless', 'disable-gpu'*/],
+            args: ['incognito','headless', 'disable-gpu'],
             },
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
@@ -102,7 +118,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://test.platerate.guru/',
+    baseUrl,
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 60000,
@@ -140,7 +156,7 @@ exports.config = {
     reporters: ['spec', 
     ['timeline', { 
         outputDir: './output',
-        fileName:'report.html',
+        fileName: ENV + '_report.html',
         embedImages: true,
         images : {
             quality: 80,

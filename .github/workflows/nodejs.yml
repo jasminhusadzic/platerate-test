@@ -1,10 +1,7 @@
-name: Remote Dispatch Action Responder
+name: Remote Dispatch Action Responderr
  
 on: 
  repository_dispatch:
- push:
-  branches: 
-   - dev
 jobs:
   ping-pong:
     runs-on: ubuntu-latest
@@ -19,7 +16,7 @@ jobs:
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
           --data '{"event_type": "pong", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'      
-  build:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -39,43 +36,45 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
-      run: |
-        npm ci
-        npm run build --if-present
-        ./node_modules/.bin/wdio wdio.conf.js
+    - name: Install
+      run: npm install
+    - name: Run tests on test environment
+      if: always()
+      run: ENV=test npm run test
+    - name: Run tests on staging environment
+      if: always()
+      run: ENV=staging npm run test
     - name: Upload report
       if: always()
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2-preview
       with:
           name: report
-          path: ./output/report.html
-     
+          path: ./output/*.html
   email:
    if: always()
-   needs: [build] 
+   needs: [test] 
    runs-on: ubuntu-latest
    steps:
     - name: Download report
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v2-preview
       with:
           name: report
+          path: ./ready
     - name: Send mail
       uses: dawidd6/action-send-mail@v2
       with:
        server_address: smtp.gmail.com
        server_port: 465
-       username: ${{secrets.MAIL_USERNAME}}
-       password: ${{secrets.MAIL_PASSWORD}}
+       username: platerateqa
+       password: jasmin2906
        subject: Test Automation Report
        # Literal body:
        body: Test automation report in attachments!
        to: jasmin.husadzic@gmail.com
-       from: QA Automation Department # <user@example.com>
+       from: PlateRate QA Automation Department # <user@example.com>
        # Optional content type (defaults to text/plain):
        content_type: text/html
        # Optional attachments:
-       attachments: report/report.html
-
+       attachments: ./ready/test_report.html, ./ready/staging_report.html
       env:
         CI: true
