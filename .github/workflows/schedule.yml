@@ -1,9 +1,6 @@
 name: Scheduled Reports
 
 on:
-  push:
-    branches: 
-      - master
   schedule:
     - cron: '05 6 * * *'
 jobs:
