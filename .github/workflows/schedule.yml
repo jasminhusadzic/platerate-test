@@ -2,9 +2,8 @@ name: Scheduled Reports
 
 on:
   push:
-    branches-ignore: 
+    branches: 
       - master
-      - dev
   schedule:
     - cron: '05 6 * * *'
 jobs:
