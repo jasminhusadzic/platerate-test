@@ -1,8 +1,12 @@
 name: Scheduled Reports
 
 on:
+  push:
+    branches-ignore: 
+      - master
+      - dev
   schedule:
-    - cron: '0 6 * * *'
+    - cron: '05 6 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
