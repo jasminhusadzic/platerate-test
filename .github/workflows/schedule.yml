@@ -2,7 +2,7 @@ name: Scheduled Reports
 
 on:
   schedule:
-    - cron: '0 6 * * *'
+    - cron: '* * * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
