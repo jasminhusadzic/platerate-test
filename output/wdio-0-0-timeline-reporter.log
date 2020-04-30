@@ -1,6 +1,6 @@
 {
-  "start": "2020-04-28T14:36:56.087Z",
-  "end": "2020-04-28T14:51:03.848Z",
+  "start": "2020-04-30T12:27:30.495Z",
+  "end": "2020-04-30T12:28:12.365Z",
   "capabilities": {
     "acceptInsecureCerts": false,
     "acceptSslCerts": false,
@@ -9,12 +9,12 @@
     "browserName": "chrome",
     "chrome": {
       "chromedriverVersion": "2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a)",
-      "userDataDir": "C:\\Users\\Jaso\\AppData\\Local\\Temp\\scoped_dir9144_25095"
+      "userDataDir": "C:\\Users\\Jaso\\AppData\\Local\\Temp\\scoped_dir9760_4922"
     },
     "cssSelectorsEnabled": true,
     "databaseEnabled": false,
     "goog:chromeOptions": {
-      "debuggerAddress": "localhost:62917"
+      "debuggerAddress": "localhost:54010"
     },
     "handlesAlerts": true,
     "hasTouchScreen": false,
@@ -30,285 +30,174 @@
     "takesHeapSnapshot": true,
     "takesScreenshot": true,
     "unexpectedAlertBehaviour": "",
-    "version": "81.0.4044.122",
+    "version": "81.0.4044.129",
     "webStorageEnabled": true,
-    "webdriver.remote.sessionid": "df3ed68ec2796831baef529355923337",
-    "sessionId": "df3ed68ec2796831baef529355923337"
+    "webdriver.remote.sessionid": "4b0b544ae3068404273eb62eac6e437d",
+    "sessionId": "4b0b544ae3068404273eb62eac6e437d"
   },
   "baseUrl": "https://test.platerate.guru",
   "framework": "jasmine",
   "mochaOpts": {
     "timeout": 10000
   },
-  "duration": 847761,
+  "duration": 41870,
   "suites": [
     {
       "title": "home page suite",
-      "duration": 847137,
-      "start": "2020-04-28T14:36:56.096Z",
-      "end": "2020-04-28T14:51:03.233Z",
+      "duration": 41568,
+      "start": "2020-04-30T12:27:30.503Z",
+      "end": "2020-04-30T12:28:12.071Z",
       "tests": [],
       "hooks": []
     },
     {
       "title": "search when user not logged",
-      "duration": 175111,
-      "start": "2020-04-28T14:36:56.096Z",
-      "end": "2020-04-28T14:39:51.207Z",
+      "duration": 10,
+      "start": "2020-04-30T12:27:30.504Z",
+      "end": "2020-04-30T12:27:30.514Z",
       "tests": [
         {
           "title": "search chicken from homepage and check load time",
-          "start": "2020-04-28T14:36:56.098Z",
-          "end": "2020-04-28T14:37:20.644Z",
-          "duration": 24546,
-          "state": "passed",
-          "screenshots": [],
-          "context": [
-            {
-              "title": "Search duration is",
-              "value": "6.762 seconds"
-            }
-          ]
+          "start": "2020-04-30T12:27:30.506Z",
+          "duration": 0,
+          "state": "skipped"
         },
         {
           "title": "search rice from result page and check load time",
-          "start": "2020-04-28T14:37:20.645Z",
-          "end": "2020-04-28T14:37:46.077Z",
-          "duration": 25432,
-          "state": "passed",
-          "screenshots": [],
-          "context": [
-            "WARNING",
-            {
-              "title": "Search duration is",
-              "value": "10.553 seconds"
-            }
-          ]
+          "start": "2020-04-30T12:27:30.507Z",
+          "duration": 0,
+          "state": "skipped"
         },
         {
           "title": "switch tab to Restaurant then search thai and check load time",
-          "start": "2020-04-28T14:37:46.078Z",
-          "end": "2020-04-28T14:38:10.295Z",
-          "duration": 24217,
-          "state": "passed",
-          "screenshots": [],
-          "context": [
-            "WARNING",
-            {
-              "title": "Search duration is",
-              "value": "11.63 seconds"
-            }
-          ]
+          "start": "2020-04-30T12:27:30.510Z",
+          "duration": 0,
+          "state": "skipped"
         },
         {
           "title": "switch tab to Food and Drink then search beef and check load time",
-          "start": "2020-04-28T14:38:10.296Z",
-          "end": "2020-04-28T14:38:52.585Z",
-          "duration": 42289,
-          "state": "passed",
-          "screenshots": [],
-          "context": [
-            "WARNING",
-            {
-              "title": "Search duration is",
-              "value": "14.349 seconds"
-            }
-          ]
+          "start": "2020-04-30T12:27:30.510Z",
+          "duration": 0,
+          "state": "skipped"
         },
         {
           "title": "search rice from results and check load time",
-          "start": "2020-04-28T14:38:52.585Z",
-          "end": "2020-04-28T14:39:08.810Z",
-          "duration": 16225,
-          "state": "passed",
-          "screenshots": [],
-          "context": [
-            {
-              "title": "Search duration is",
-              "value": "6.562 seconds"
-            }
-          ]
+          "start": "2020-04-30T12:27:30.511Z",
+          "duration": 0,
+          "state": "skipped"
         },
         {
           "title": "search chicken then search rice and then search chicken and check load time",
-          "start": "2020-04-28T14:39:08.811Z",
-          "end": "2020-04-28T14:39:40.244Z",
-          "duration": 31433,
-          "state": "passed",
-          "screenshots": [],
-          "context": [
-            "WARNING",
-            {
-              "title": "Search duration is",
-              "value": "10.91 seconds"
-            }
-          ]
+          "start": "2020-04-30T12:27:30.511Z",
+          "duration": 0,
+          "state": "skipped"
         },
         {
           "title": "search beef from homepage and check load time",
-          "start": "2020-04-28T14:39:40.246Z",
-          "end": "2020-04-28T14:39:51.206Z",
-          "duration": 10960,
-          "state": "passed",
-          "screenshots": [],
-          "context": [
-            {
-              "title": "Search duration is",
-              "value": "6.662 seconds"
-            }
-          ]
+          "start": "2020-04-30T12:27:30.513Z",
+          "duration": 0,
+          "state": "skipped"
         }
       ],
       "hooks": []
     },
     {
       "title": "search when user is logged",
-      "duration": 667538,
-      "start": "2020-04-28T14:39:51.208Z",
-      "end": "2020-04-28T14:50:58.746Z",
+      "duration": 5,
+      "start": "2020-04-30T12:27:30.515Z",
+      "end": "2020-04-30T12:27:30.520Z",
       "tests": [
         {
           "title": "search chicken from homepage and check load time",
-          "start": "2020-04-28T14:39:51.209Z",
-          "end": "2020-04-28T14:40:23.087Z",
-          "duration": 31878,
-          "state": "passed",
-          "screenshots": [],
-          "context": [
-            {
-              "title": "Search duration is",
-              "value": "5.815 seconds"
-            }
-          ]
+          "start": "2020-04-30T12:27:30.515Z",
+          "duration": 0,
+          "state": "skipped"
         },
         {
           "title": "search rice from result page and check load time",
-          "start": "2020-04-28T14:40:23.090Z",
-          "end": "2020-04-28T14:42:13.524Z",
-          "duration": 110434,
-          "state": "failed",
-          "screenshots": [],
-          "context": [
-            {
-              "title": "Search duration is",
-              "value": "67.411 seconds"
-            }
-          ],
-          "error": {
-            "message": "Expected 67.411 to be less than or equal 60.",
-            "stack": "Error: Expected 67.411 to be less than or equal 60.\n    at <Jasmine>\n    at <Jasmine>\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\test\\/home.spec.js:85:30)"
-          }
+          "start": "2020-04-30T12:27:30.517Z",
+          "duration": 0,
+          "state": "skipped"
         },
         {
           "title": "switch tab to Restaurant then search thai and check load time",
-          "start": "2020-04-28T14:42:13.525Z",
-          "end": "2020-04-28T14:44:26.231Z",
-          "duration": 132706,
-          "state": "failed",
-          "screenshots": [],
-          "context": [
-            {
-              "title": "Search duration is",
-              "value": "77.344 seconds"
-            }
-          ],
-          "error": {
-            "message": "Expected 77.344 to be less than or equal 60.",
-            "stack": "Error: Expected 77.344 to be less than or equal 60.\n    at <Jasmine>\n    at <Jasmine>\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\test\\/home.spec.js:93:30)"
-          }
+          "start": "2020-04-30T12:27:30.517Z",
+          "duration": 0,
+          "state": "skipped"
         },
         {
           "title": "switch tab to Food and Drink then search beef and check load time",
-          "start": "2020-04-28T14:44:26.233Z",
-          "end": "2020-04-28T14:47:19.271Z",
-          "duration": 173038,
-          "state": "failed",
-          "screenshots": [],
-          "context": [
-            {
-              "title": "Search duration is",
-              "value": "89.978 seconds"
-            }
-          ],
-          "error": {
-            "message": "Expected 89.978 to be less than or equal 60.",
-            "stack": "Error: Expected 89.978 to be less than or equal 60.\n    at <Jasmine>\n    at <Jasmine>\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\test\\/home.spec.js:103:30)"
-          }
+          "start": "2020-04-30T12:27:30.517Z",
+          "duration": 0,
+          "state": "skipped"
         },
         {
           "title": "search chicken from results and check load time",
-          "start": "2020-04-28T14:47:19.273Z",
-          "end": "2020-04-28T14:49:24.586Z",
-          "duration": 125313,
-          "state": "failed",
-          "screenshots": [],
-          "context": [
-            {
-              "title": "Search duration is",
-              "value": "65.401 seconds"
-            }
-          ],
-          "error": {
-            "message": "Expected 65.401 to be less than or equal 60.",
-            "stack": "Error: Expected 65.401 to be less than or equal 60.\n    at <Jasmine>\n    at <Jasmine>\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\test\\/home.spec.js:110:30)"
-          }
+          "start": "2020-04-30T12:27:30.519Z",
+          "duration": 0,
+          "state": "skipped"
         },
         {
           "title": "search chicken then search rice and then search chicken and check load time",
-          "start": "2020-04-28T14:49:24.586Z",
-          "end": "2020-04-28T14:50:38.109Z",
-          "duration": 73523,
+          "start": "2020-04-30T12:27:30.520Z",
+          "duration": 0,
+          "state": "skipped"
+        },
+        {
+          "title": "search beef from homepage and check load time",
+          "start": "2020-04-30T12:27:30.520Z",
+          "duration": 0,
+          "state": "skipped"
+        }
+      ],
+      "hooks": []
+    },
+    {
+      "title": "advanced search with food filter",
+      "duration": 1,
+      "start": "2020-04-30T12:27:30.521Z",
+      "end": "2020-04-30T12:27:30.522Z",
+      "tests": [
+        {
+          "title": "search chicken uncheck highest price in filter",
+          "start": "2020-04-30T12:27:30.522Z",
+          "duration": 0,
+          "state": "skipped"
+        }
+      ],
+      "hooks": []
+    },
+    {
+      "title": "open restaurant page when user not logged",
+      "duration": 41548,
+      "start": "2020-04-30T12:27:30.522Z",
+      "end": "2020-04-30T12:28:12.070Z",
+      "tests": [
+        {
+          "title": "open restaurant page and check time load",
+          "start": "2020-04-30T12:27:30.522Z",
+          "end": "2020-04-30T12:28:12.068Z",
+          "duration": 41546,
           "state": "passed",
           "screenshots": [],
           "context": [
             "WARNING",
             {
               "title": "Search duration is",
-              "value": "14.38 seconds"
+              "value": "20.443 seconds"
             }
           ]
-        },
-        {
-          "title": "search beef from homepage and check load time",
-          "start": "2020-04-28T14:50:38.110Z",
-          "end": "2020-04-28T14:50:58.745Z",
-          "duration": 20635,
-          "state": "passed",
-          "screenshots": [],
-          "context": [
-            {
-              "title": "Search duration is",
-              "value": "5.868 seconds"
-            }
-          ]
-        }
-      ],
-      "hooks": []
-    },
-    {
-      "title": "food filter",
-      "duration": 4484,
-      "start": "2020-04-28T14:50:58.749Z",
-      "end": "2020-04-28T14:51:03.233Z",
-      "tests": [
-        {
-          "title": "check food filter is opened on click",
-          "start": "2020-04-28T14:50:58.750Z",
-          "end": "2020-04-28T14:51:03.233Z",
-          "duration": 4483,
-          "state": "passed",
-          "screenshots": []
         }
       ],
       "hooks": []
     }
   ],
   "specs": [
-    "C:\\Users\\Jaso\\Documents\\GitHub\\regression-platerate\\test\\home.spec.js"
+    "C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\home.spec.js"
   ],
   "state": {
-    "passed": 11,
-    "failed": 4,
-    "skipped": 0
+    "passed": 1,
+    "failed": 0,
+    "skipped": 15
   }
 }
