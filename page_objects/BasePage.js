@@ -1,15 +1,8 @@
-import SearchResults from './components/SearchResults';
-
-const TimelineReporter = require('wdio-timeline-reporter').default;
-class Page {
+class BasePage {
 
     open(path){
         browser.url(path);
         browser.maximizeWindow();
-    }
-
-    get searchResults(){
-        return SearchResults;
     }
 
     reportDuration(duration){
@@ -21,6 +14,13 @@ class Page {
             value: duration.toString() + " seconds"
           });
     }
+
+    waitElementForDisplayed(element){
+        element.waitForDisplayed({
+            timeout: 20000,
+            timeoutMsg: element + " did not appear"
+        })
+    }
 }
 
-export default Page;
+export default BasePage;

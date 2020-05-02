@@ -1,7 +1,7 @@
-import Page from '../Page'
+import CommonPage from '../CommonPage'
 import HomePage from './HomePage';
 
-class LoginPage extends Page {
+class LoginPage extends CommonPage {
 
     get email() {return $('#email');}
     get password() {return $('#password');}

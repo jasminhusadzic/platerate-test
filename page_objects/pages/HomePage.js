@@ -1,6 +1,6 @@
-import Page from '../Page'
+import CommonPage from '../CommonPage'
  
-class HomePage extends Page {
+class HomePage extends CommonPage {
 
     open(){
         super.open('/');
