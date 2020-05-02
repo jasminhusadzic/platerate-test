@@ -18,6 +18,9 @@ class HomePage extends Page {
     get loginButton(){return $('button*=Login/Register')};
     get restaurantTab(){return $("#restaurant")};
     get foodAndDrinkTab(){return $("#menuitem")};
+    get highestValueCheck(){return $("//label[@for='checkboxValue']")};
+    get viewRestaurantButton(){return $("(//a[contains(@class, 'view-venue-btn')])[1]")};
+    get restaurantInformation(){return $("#accordionRestaurant")};
 
     clickOnSlider(){
         this.filterIcon.click();
@@ -32,11 +35,35 @@ class HomePage extends Page {
     }
 
     clickOnRestaurantTab(){
+        this.restaurantTab.waitForDisplayed({
+            timeout: 10000,
+            timeoutMsg: 'restaurant tab did not appear'
+        });
+        this.restaurantTab.scrollIntoView(false);
         this.restaurantTab.click();
     }
 
     clickOnFoodAndDrinkTab(){
+        this.foodAndDrinkTab.waitForDisplayed({
+            timeout: 10000,
+            timeoutMsg: 'food and drink tab did not appear'
+        });
+        this.foodAndDrinkTab.scrollIntoView(false);
         this.foodAndDrinkTab.click();
+    }
+
+    clickOnViewRestaurant(){
+        let startTime = new Date();
+        browser.url(this.viewRestaurantButton.getAttribute('href'));
+        browser.pause(3000);
+        browser.waitUntil(
+            ()=> this.restaurantInformation.isDisplayed(),
+            {
+                timeout: 120000,
+                timeoutMsg: 'Restaurant page did not appear before 2 minutes'
+            }
+        )
+        return((Date.now() - startTime)/1000);
     }
 
     search(searchTerm, location){
@@ -52,17 +79,19 @@ class HomePage extends Page {
         );
     }
 
-
     getSearchDuration(searchTerm, location){
         let startTime = new Date();
-        startTime.getTime();
         if(searchTerm != null){
             this.search(searchTerm, location);
         }
-        let endTime = new Date;
-        endTime.getTime();
-        return ((endTime - startTime)/1000);
+        return ((Date.now() - startTime)/1000);
     }
+
+    checkHighestValue(){
+        this.highestValueCheck.click();
+    }
+
+   
 }
 
 
