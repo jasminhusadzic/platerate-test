@@ -1,9 +1,15 @@
+import SearchResults from './components/SearchResults';
+
 const TimelineReporter = require('wdio-timeline-reporter').default;
 class Page {
- 
+
     open(path){
         browser.url(path);
         browser.maximizeWindow();
+    }
+
+    get searchResults(){
+        return SearchResults;
     }
 
     reportDuration(duration){

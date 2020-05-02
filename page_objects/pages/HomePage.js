@@ -35,11 +35,35 @@ class HomePage extends Page {
     }
 
     clickOnRestaurantTab(){
+        this.restaurantTab.waitForDisplayed({
+            timeout: 10000,
+            timeoutMsg: 'restaurant tab did not appear'
+        });
+        this.restaurantTab.scrollIntoView(false);
         this.restaurantTab.click();
     }
 
     clickOnFoodAndDrinkTab(){
+        this.foodAndDrinkTab.waitForDisplayed({
+            timeout: 10000,
+            timeoutMsg: 'food and drink tab did not appear'
+        });
+        this.foodAndDrinkTab.scrollIntoView(false);
         this.foodAndDrinkTab.click();
+    }
+
+    clickOnViewRestaurant(){
+        let startTime = new Date();
+        browser.url(this.viewRestaurantButton.getAttribute('href'));
+        browser.pause(3000);
+        browser.waitUntil(
+            ()=> this.restaurantInformation.isDisplayed(),
+            {
+                timeout: 120000,
+                timeoutMsg: 'Restaurant page did not appear before 2 minutes'
+            }
+        )
+        return((Date.now() - startTime)/1000);
     }
 
     search(searchTerm, location){
@@ -67,23 +91,7 @@ class HomePage extends Page {
         this.highestValueCheck.click();
     }
 
-    clickOnViewRestaurant(){
-        let startTime = new Date();
-        browser.url(this.viewRestaurantButton.getAttribute('href'));
-        browser.pause(3000);
-        browser.waitUntil(
-            ()=> this.restaurantInformation.isDisplayed(),
-            {
-                timeout: 120000,
-                timeoutMsg: 'Restaurant page did not appear before 2 minutes'
-            }
-        )
-        return((Date.now() - startTime)/1000);
-    }
-
-    handleModal(){
-
-    }
+   
 }
 
 
