@@ -1,3 +1,5 @@
+const TimelineReporter = require('wdio-timeline-reporter').default;
+
 class BasePage {
 
     open(path){
