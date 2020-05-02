@@ -3,6 +3,7 @@ import LoginPage from '../page_objects/pages/LoginPage';
 import ProfilePage from '../page_objects/pages/ProfilePage';
 import LoginData from '../data/login.data';
 import SearchData from '../data/search.data';
+import RestaurantPage from '../page_objects/pages/RestaurantPage';
 
 describe("home page suite", ()=>{
     beforeEach(()=>{
@@ -210,6 +211,9 @@ describe("home page suite", ()=>{
             HomePage.search(SearchData.chicken, SearchData.city);
             HomePage.clickOnFoodAndDrinkTab();
             HomePage.searchResults.clickOnRate();
+            HomePage.modalComponent.denyCredit();
+            RestaurantPage.rateMenuItem();
+            RestaurantPage.modalComponent.addToOrder();
         });
 
     });

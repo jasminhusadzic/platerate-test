@@ -1,8 +1,8 @@
-import Page from '../Page'
+import CommonPage from '../CommonPage'
 import HomePage from './HomePage'
 
 
-class ProfilePage extends Page {
+class ProfilePage extends CommonPage {
     
     get menuIcon() { return $("span[onclick='openNav()']")};
     get logoutButton() {return $("//a[contains(text(), 'Logout')]")};
