@@ -3,7 +3,7 @@ import BasePage from "../BasePage";
 class ModalComponent extends BasePage {
 
     get modalCreditDeny(){return $("//div[@id='footer-model-instruction']/button[1]")};
-    get addToOrderButton(){return $("#add-to-order")};
+    get addToOrderButton(){return $("//button[@id='add-to-order']")};
 
     denyCredit(){
         this.waitElementForDisplayed(this.modalCreditDeny);

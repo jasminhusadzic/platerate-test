@@ -214,6 +214,7 @@ describe("home page suite", ()=>{
             HomePage.modalComponent.denyCredit();
             RestaurantPage.rateMenuItem();
             RestaurantPage.modalComponent.addToOrder();
+            RestaurantPage.rateSelectedItem();
         });
 
     });
