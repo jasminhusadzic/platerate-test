@@ -9,7 +9,8 @@ describe("home page suite", ()=>{
     beforeEach(()=>{
         HomePage.open();
         if(HomePage.acceptCoockiesButton.isDisplayed())HomePage.acceptCoockies();
-        if(HomePage.neverPlay.isDisplayed())HomePage.clickNeverPlay();   
+        // if(HomePage.neverPlay.isDisplayed())HomePage.clickNeverPlay();
+        if(HomePage.skipSplashScreenButton.isDisplayed())HomePage.skipSplashScreenButton.click();   
     });
 
     describe("search when user not logged", ()=>{
