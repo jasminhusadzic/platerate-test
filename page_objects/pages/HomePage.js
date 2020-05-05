@@ -11,6 +11,7 @@ class HomePage extends CommonPage {
     get filterHeading(){return $("h4=Filter")};
     get acceptCoockiesButton(){return $("#acceptCookies")};
     get neverPlay(){return $('strong*=play again')};
+    get skipSplashScreenButton(){return $("(//div[contains(text(), 'Skip')])[3]")};
     get searchInput(){return $('#search')};
     get locationInput(){return $("//input[@name='locationinput']")};
     get resultInfoHeader(){return $("//div[@id='search_results_div']//div[contains(@style, 'display: block')]")};
@@ -28,6 +29,10 @@ class HomePage extends CommonPage {
 
     acceptCoockies(){
         this.acceptCoockiesButton.click();
+    }
+    skipSplashScreen(){
+        this.waitElementForDisplayed(this.skipSplashScreenButton);
+        this.skipSplashScreenButton.click();
     }
 
     clickNeverPlay(){
