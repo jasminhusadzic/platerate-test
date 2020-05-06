@@ -105,7 +105,7 @@ describe("home page suite", ()=>{
             HomePage.reportDuration(duration);
         });
 
-        it("open first result and check time load", ()=>{
+        it("open first results and check time load", ()=>{
             HomePage.search(SearchData.rice, SearchData.city);
             HomePage.clickOnRestaurantTab();
             let duration = HomePage.clickOnViewRestaurant();
