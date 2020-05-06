@@ -8,12 +8,15 @@ import RestaurantPage from '../page_objects/pages/RestaurantPage';
 describe("home page suite", ()=>{
     beforeEach(()=>{
         HomePage.open();
-        if(HomePage.acceptCoockiesButton.isDisplayed())HomePage.acceptCoockies();
-        // if(HomePage.neverPlay.isDisplayed())HomePage.clickNeverPlay();
-        if(HomePage.skipSplashScreenButton.isDisplayed())HomePage.skipSplashScreenButton.click();   
+        if(HomePage.skipSplashScreenButton.isDisplayed())HomePage.skipSplashScreenButton.click();  
+        if(HomePage.acceptCoockiesButton.isDisplayed())HomePage.acceptCoockies(); 
     });
 
     describe("search when user not logged", ()=>{
+        afterEach(()=>{
+            browser.deleteAllCookies();
+            browser.clearSessionStorage();
+        })
 
         it("search chicken from homepage and check load time", ()=>{
             let duration = HomePage.getSearchDuration(SearchData.chicken, SearchData.city);
@@ -44,27 +47,15 @@ describe("home page suite", ()=>{
             expect(duration).toBeLessThanOrEqual(60);
             HomePage.reportDuration(duration);
         })
-    
-        it("search rice from results and check load time", ()=>{
-            HomePage.search(SearchData.chicken, SearchData.city);
-            let duration = HomePage.getSearchDuration(SearchData.rice, SearchData.city);
-            expect(duration).toBeLessThanOrEqual(60);
-            HomePage.reportDuration(duration);
-        })
-        it("search chicken then search rice and then search chicken and check load time", ()=>{
-            HomePage.search(SearchData.chicken, SearchData.city);
-            HomePage.search(SearchData.rice, SearchData.city);
-            let duration = HomePage.getSearchDuration(SearchData.chicken, SearchData.city);
-            expect(duration).toBeLessThanOrEqual(60);
-            HomePage.reportDuration(duration);
-        })
-    
-        it("search beef from homepage and check load time", ()=>{
-            let duration = HomePage.getSearchDuration(SearchData.beef, SearchData.city);
-            expect(duration).toBeLessThanOrEqual(60);
-            HomePage.reportDuration(duration);
-        })
 
+        it("open first result and check time load", ()=>{
+            HomePage.search(SearchData.rice, SearchData.city);
+            HomePage.clickOnRestaurantTab();
+            let duration = HomePage.clickOnViewRestaurant();
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+    
     });
 
     describe("search when user is logged", ()=>{
@@ -78,7 +69,9 @@ describe("home page suite", ()=>{
         afterEach(()=>{
             if(HomePage.cart.isDisplayed()){
                 ProfilePage.logout();
-            } 
+            }
+            browser.deleteAllCookies();
+            browser.clearSessionStorage();
         });
         
         it("search chicken from homepage and check load time", ()=>{
@@ -111,27 +104,15 @@ describe("home page suite", ()=>{
             expect(duration).toBeLessThanOrEqual(60);
             HomePage.reportDuration(duration);
         });
-    
-        it("search chicken from results and check load time", ()=>{
-            HomePage.search(SearchData.rice, SearchData.city);
-            let duration = HomePage.getSearchDuration(SearchData.chicken, SearchData.city);
-            expect(duration).toBeLessThanOrEqual(60);
-            HomePage.reportDuration(duration);
-        });
 
-        it("search chicken then search rice and then search chicken and check load time", ()=>{
-            HomePage.search(SearchData.chicken, SearchData.city);
+        it("open first results and check time load", ()=>{
             HomePage.search(SearchData.rice, SearchData.city);
-            let duration = HomePage.getSearchDuration(SearchData.chicken, SearchData.city);
+            HomePage.clickOnRestaurantTab();
+            let duration = HomePage.clickOnViewRestaurant();
             expect(duration).toBeLessThanOrEqual(60);
             HomePage.reportDuration(duration);
-        });
+        })
     
-        it("search beef from homepage and check load time", ()=>{
-            let duration = HomePage.getSearchDuration(SearchData.beef, SearchData.city);
-            expect(duration).toBeLessThanOrEqual(60);
-            HomePage.reportDuration(duration);
-        });
 
     });
     
@@ -157,6 +138,7 @@ describe("home page suite", ()=>{
             expect(duration).toBeLessThanOrEqual(60);
             HomePage.reportDuration(duration);
         });
+
     });
 
     describe("open restaurant page when user not logged", ()=>{
@@ -208,7 +190,7 @@ describe("home page suite", ()=>{
             } 
         });
 
-        xit("select one item and rate", ()=>{
+        fit("select one item and rate", ()=>{
             HomePage.search(SearchData.chicken, SearchData.city);
             HomePage.clickOnFoodAndDrinkTab();
             HomePage.searchResults.clickOnRate();
