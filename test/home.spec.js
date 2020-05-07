@@ -190,7 +190,7 @@ describe("home page suite", ()=>{
             } 
         });
 
-        fit("select one item and rate", ()=>{
+        xit("select one item and rate", ()=>{
             HomePage.search(SearchData.chicken, SearchData.city);
             HomePage.clickOnFoodAndDrinkTab();
             HomePage.searchResults.clickOnRate();
