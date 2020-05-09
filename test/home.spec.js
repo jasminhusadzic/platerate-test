@@ -8,6 +8,7 @@ import RestaurantPage from '../page_objects/pages/RestaurantPage';
 describe("home page suite", ()=>{
     beforeEach(()=>{
         HomePage.open();
+        HomePage.skipSplashScreenButtonStaging.click();
         if(HomePage.skipSplashScreenButton.isDisplayed())HomePage.skipSplashScreenButton.click();  
         if(HomePage.acceptCoockiesButton.isDisplayed())HomePage.acceptCoockies(); 
     });
