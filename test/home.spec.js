@@ -9,7 +9,7 @@ describe("home page suite", ()=>{
     beforeEach(()=>{
         HomePage.open();
         if(HomePage.getEnvironmentUrl().includes('test')){
-            HomePage.skipSplashScreen();
+            //HomePage.skipSplashScreen();
         }else if (HomePage.getEnvironmentUrl().includes('staging')){
             HomePage.skipSplashScreenStaging();
         }
