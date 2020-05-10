@@ -36,6 +36,15 @@ class HomePage extends CommonPage {
         this.skipSplashScreenButton.click();
     }
 
+    skipSplashScreenStaging(){
+        this.waitElementForDisplayed(this.skipSplashScreenButtonStaging);
+        this.skipSplashScreenButtonStaging.click()
+    }
+
+    getEnvironmentUrl(){
+        return browser.getUrl();
+    }
+
     clickNeverPlay(){
         this.neverPlay.click();
     }
@@ -75,7 +84,8 @@ class HomePage extends CommonPage {
     search(searchTerm, location){
         this.searchInput.setValue(searchTerm);
         this.locationInput.setValue(location)
-        this.searchButton.click();
+        //this.searchButton.click();
+        browser.keys("\uE007");
         browser.waitUntil(
             ()=> this.resultInfoHeader.getText().includes(searchTerm),
             {
@@ -96,6 +106,7 @@ class HomePage extends CommonPage {
     checkHighestValue(){
         this.highestValueCheck.click();
     }
+
 
    
 }
