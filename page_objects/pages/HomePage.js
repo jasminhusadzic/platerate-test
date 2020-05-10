@@ -32,7 +32,8 @@ class HomePage extends CommonPage {
         this.acceptCoockiesButton.click();
     }
     skipSplashScreen(){
-        this.waitElementForDisplayed(this.skipSplashScreenButton);
+        //this.waitElementForDisplayed(this.skipSplashScreenButton);
+        this.skipSplashScreenButton.waitForDisplayed();
         this.skipSplashScreenButton.click();
     }
 
