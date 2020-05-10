@@ -136,7 +136,7 @@ describe("home page suite", ()=>{
             browser.clearSessionStorage();
         });
 
-        it("search chicken uncheck highest price in filter", ()=>{
+        xit("search chicken uncheck highest price in filter", ()=>{
             HomePage.clickOnSlider();
             expect(HomePage.filterHeading.getText()).toContain("FILTER");
             HomePage.checkHighestValue();
