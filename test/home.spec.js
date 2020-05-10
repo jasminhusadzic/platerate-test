@@ -22,7 +22,7 @@ describe("home page suite", ()=>{
             browser.clearSessionStorage();
         })
 
-        fit("search chicken from homepage and check load time", ()=>{
+        it("search chicken from homepage and check load time", ()=>{
             let duration = HomePage.getSearchDuration(SearchData.chicken, SearchData.city);
             expect(duration).toBeLessThanOrEqual(60);
             HomePage.reportDuration(duration);
