@@ -8,8 +8,11 @@ import RestaurantPage from '../page_objects/pages/RestaurantPage';
 describe("home page suite", ()=>{
     beforeEach(()=>{
         HomePage.open();
-        HomePage.skipSplashScreenButtonStaging.click();
-        if(HomePage.skipSplashScreenButton.isDisplayed())HomePage.skipSplashScreenButton.click();  
+        if(HomePage.getEnvironmentUrl().includes('test')){
+            HomePage.skipSplashScreen();
+        }else if (HomePage.getEnvironmentUrl().includes('staging')){
+            HomePage.skipSplashScreenStaging();
+        }
         if(HomePage.acceptCoockiesButton.isDisplayed())HomePage.acceptCoockies(); 
     });
 
@@ -129,6 +132,8 @@ describe("home page suite", ()=>{
             if(HomePage.cart.isDisplayed()){
                 ProfilePage.logout();
             } 
+            browser.deleteAllCookies();
+            browser.clearSessionStorage();
         });
 
         it("search chicken uncheck highest price in filter", ()=>{
@@ -143,6 +148,14 @@ describe("home page suite", ()=>{
     });
 
     describe("open restaurant page when user not logged", ()=>{
+
+        afterEach(()=>{
+            if(HomePage.cart.isDisplayed()){
+                ProfilePage.logout();
+            } 
+            browser.deleteAllCookies();
+            browser.clearSessionStorage();
+        });
 
         it("open restaurant page and check time load", ()=>{
             HomePage.search(SearchData.rice, SearchData.city);
@@ -166,6 +179,8 @@ describe("home page suite", ()=>{
             if(HomePage.cart.isDisplayed()){
                 ProfilePage.logout();
             } 
+            browser.deleteAllCookies();
+            browser.clearSessionStorage();
         });
 
         it("open restaurant page and check time load", ()=>{
@@ -189,6 +204,8 @@ describe("home page suite", ()=>{
             if(HomePage.cart.isDisplayed()){
                 ProfilePage.logout();
             } 
+            browser.deleteAllCookies();
+            browser.clearSessionStorage();
         });
 
         xit("select one item and rate", ()=>{
