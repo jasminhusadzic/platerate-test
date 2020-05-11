@@ -25,12 +25,12 @@
     "chromedriver": "^80.0.2",
     "eslint": "^6.8.0",
     "eslint-plugin-wdio": "^6.0.12",
+    "moment": "^2.25.3",
     "wdio-chromedriver-service": "^6.0.1",
     "webdriverio": "^6.0.15"
   },
   "dependencies": {
     "expect-webdriverio": "^1.0.0",
-    "moment": "^2.24.0",
     "selenium-standalone": "^6.17.0",
     "wdio-html-reporter": "^1.0.2",
     "wdio-timeline-reporter": "^5.1.2"

@@ -3,5 +3,7 @@ module.exports = {
     rice: 'rice',
     beef: 'beef',
     thai: 'Thai',
-    city: 'New York'
+    city: 'New York',
+    marchello: 'Marcello’s Ristorante',
+    amrchelloLocation: 'Suffern, NY'
 }

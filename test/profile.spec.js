@@ -17,19 +17,19 @@ describe("User profile test suite", ()=>{
         } 
     });
 
-    xit("profile page should contain profile picture", ()=>{
+    it("profile page should contain profile picture", ()=>{
         ProfilePage.open();
         ProfilePage.waitforProfilePicture();
         expect(ProfilePage.profilePicture).toBeDisplayed;
     })
 
-    xit("profile page should contain user info", ()=>{
+    it("profile page should contain user info", ()=>{
         ProfilePage.open();
         ProfilePage.waitforUserName();
         expect(ProfilePage.userName).toBeDisplayed;
     })
 
-    xit("edit first and last name, should be changed on profile page", ()=>{
+    it("edit first and last name, should be changed on profile page", ()=>{
         ProfilePage.open();
         ProfilePage.changeNames('Jasmin 2', 'Husadzic 2');
         ProfilePage.waitforUserName();
@@ -37,7 +37,7 @@ describe("User profile test suite", ()=>{
 
     })
 
-    it("add aditional email and save", ()=>{
+    xit("add aditional email and save", ()=>{
         ProfilePage.open();
         ProfilePage.addAditionalEmail('dodatn22i@email.com');
         expect($('#secondaryemail').getAttribute('value')).toContain('nesto');

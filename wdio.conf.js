@@ -47,6 +47,9 @@ exports.config = {
         ],
         profile: [
             './test/profile.spec.js'
+        ],
+        users: [
+            './test/users.spec.js'
         ]
     },
     //
