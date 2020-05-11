@@ -47,6 +47,9 @@ exports.config = {
         ],
         profile: [
             './test/profile.spec.js'
+        ],
+        users: [
+            './test/users.spec.js'
         ]
     },
     //
@@ -80,7 +83,7 @@ exports.config = {
         //
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['incognito', '--window-size=1920,1080','headless', 'disable-gpu'],
+            args: ['incognito', '--window-size=1920,1080'/*,'headless', 'disable-gpu'*/],
             },
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.

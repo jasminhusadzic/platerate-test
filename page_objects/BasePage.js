@@ -1,4 +1,5 @@
 const TimelineReporter = require('wdio-timeline-reporter').default;
+let moment = require('moment');
 
 class BasePage {
 
@@ -22,6 +23,10 @@ class BasePage {
             timeout: 20000,
             timeoutMsg: element.getTagName() +" | "+ element.getAttribute("class") + " did not appear"
         })
+    }
+
+    generateMoment(){
+        return moment().format('YYYYDDMM');
     }
 }
 
