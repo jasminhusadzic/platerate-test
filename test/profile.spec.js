@@ -6,7 +6,7 @@ describe("User profile test suite", ()=>{
     
     beforeEach(()=>{
         LoginPage.open();
-        HomePage.acceptCoockiesButton.isDisplayed() ? HomePage.acceptCoockies() : console.log('nema kukija');  
+        HomePage.prepareHome();
         LoginPage.login('jasmin.husadzic@gmail.com', 'test123');
         expect(HomePage.cart).toBeDisplayed;
     });

@@ -20,7 +20,7 @@ class BasePage {
 
     waitElementForDisplayed(element){
         element.waitForDisplayed({
-            timeout: 20000,
+            timeout: 120000,
             timeoutMsg: element.getTagName() +" | "+ element.getAttribute("class") + " did not appear"
         })
     }

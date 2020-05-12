@@ -13,7 +13,6 @@ class HomePage extends CommonPage {
     get neverPlay(){return $('strong*=play again')};
     get modalWrapper(){return $("#videopage")};
     get skipSplashScreenButton(){return $("//div[contains(@class, 'slick-slide slick-active')]//div[contains(@class,'splashskip')]")};
-    get skipSplashScreenButtonStaging(){return $("(//div[contains(text(), 'Skip')])[3]")};
     get searchInput(){return $('#search')};
     get locationInput(){return $("//input[@name='locationinput']")};
     get resultInfoHeader(){return $("//div[@id='search_results_div']//div[contains(@style, 'display: block')]")};
@@ -37,17 +36,9 @@ class HomePage extends CommonPage {
         this.skipSplashScreenButton.click();
     }
 
-    skipSplashScreenStaging(){
-        this.waitElementForDisplayed(this.skipSplashScreenButtonStaging);
-        this.skipSplashScreenButtonStaging.click()
-    }
-
-    getEnvironmentUrl(){
-        return browser.getUrl();
-    }
-
-    clickNeverPlay(){
-        this.neverPlay.click();
+    prepareHome(){
+        this.skipSplashScreen();
+        if(this.acceptCoockiesButton.isDisplayed())this.acceptCoockies(); 
     }
 
     clickOnRestaurantTab(){
@@ -79,6 +70,19 @@ class HomePage extends CommonPage {
                 timeoutMsg: 'Restaurant page did not appear before 2 minutes'
             }
         )
+        return((Date.now() - startTime)/1000);
+    }
+
+    clickBackToResults(searchTerm){
+        let startTime = new Date();
+        browser.back();
+        browser.waitUntil(
+            ()=> this.resultInfoHeader.getText().includes(searchTerm),
+            {
+                timeout: 120000,
+                timeoutMsg: searchTerm + ' did not appear before 2 minutes'
+            }
+        );
         return((Date.now() - startTime)/1000);
     }
 

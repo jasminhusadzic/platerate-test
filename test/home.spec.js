@@ -8,12 +8,7 @@ import RestaurantPage from '../page_objects/pages/RestaurantPage';
 describe("home page suite", ()=>{
     beforeEach(()=>{
         HomePage.open();
-        if(HomePage.getEnvironmentUrl().includes('test')){
-            HomePage.skipSplashScreen();
-        }else if (HomePage.getEnvironmentUrl().includes('staging')){
-            HomePage.skipSplashScreenStaging();
-        }
-        if(HomePage.acceptCoockiesButton.isDisplayed())HomePage.acceptCoockies(); 
+        HomePage.prepareHome();
     });
 
     describe("search when user not logged", ()=>{
@@ -56,6 +51,16 @@ describe("home page suite", ()=>{
             HomePage.search(SearchData.rice, SearchData.city);
             HomePage.clickOnRestaurantTab();
             let duration = HomePage.clickOnViewRestaurant();
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+            
+        })
+
+        it("open first result then click back and check load time", ()=>{
+            HomePage.search(SearchData.rice, SearchData.city);
+            HomePage.clickOnRestaurantTab();
+            HomePage.clickOnViewRestaurant();
+            let duration = HomePage.clickBackToResults(SearchData.rice);
             expect(duration).toBeLessThanOrEqual(60);
             HomePage.reportDuration(duration);
         })
@@ -113,6 +118,15 @@ describe("home page suite", ()=>{
             HomePage.search(SearchData.rice, SearchData.city);
             HomePage.clickOnRestaurantTab();
             let duration = HomePage.clickOnViewRestaurant();
+            expect(duration).toBeLessThanOrEqual(60);
+            HomePage.reportDuration(duration);
+        })
+
+        it("open first result then click back and check load time", ()=>{
+            HomePage.search(SearchData.rice, SearchData.city);
+            HomePage.clickOnRestaurantTab();
+            HomePage.clickOnViewRestaurant();
+            let duration = HomePage.clickBackToResults(SearchData.rice);
             expect(duration).toBeLessThanOrEqual(60);
             HomePage.reportDuration(duration);
         })

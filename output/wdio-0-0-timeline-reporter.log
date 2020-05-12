@@ -1,6 +1,6 @@
 {
-  "start": "2020-05-11T17:47:45.886Z",
-  "end": "2020-05-11T17:50:09.221Z",
+  "start": "2020-05-12T18:00:22.545Z",
+  "end": "2020-05-12T18:04:31.714Z",
   "capabilities": {
     "acceptInsecureCerts": false,
     "acceptSslCerts": false,
@@ -9,12 +9,12 @@
     "browserName": "chrome",
     "chrome": {
       "chromedriverVersion": "2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a)",
-      "userDataDir": "C:\\Users\\Jaso\\AppData\\Local\\Temp\\scoped_dir16504_14042"
+      "userDataDir": "C:\\Users\\Jaso\\AppData\\Local\\Temp\\scoped_dir9764_1165"
     },
     "cssSelectorsEnabled": true,
     "databaseEnabled": false,
     "goog:chromeOptions": {
-      "debuggerAddress": "localhost:55294"
+      "debuggerAddress": "localhost:58432"
     },
     "handlesAlerts": true,
     "hasTouchScreen": false,
@@ -32,62 +32,44 @@
     "unexpectedAlertBehaviour": "",
     "version": "81.0.4044.138",
     "webStorageEnabled": true,
-    "webdriver.remote.sessionid": "6c2f37d5a84d86e775cdb7bd82c556b0",
-    "sessionId": "6c2f37d5a84d86e775cdb7bd82c556b0"
+    "webdriver.remote.sessionid": "75ad63f003d48beaeb1f8fbb5493a3d2",
+    "sessionId": "75ad63f003d48beaeb1f8fbb5493a3d2"
   },
   "baseUrl": "https://test.platerate.guru",
   "framework": "jasmine",
   "mochaOpts": {
     "timeout": 10000
   },
-  "duration": 143335,
+  "duration": 249169,
   "suites": [
     {
-      "title": "User profile test suite",
-      "duration": 142978,
-      "start": "2020-05-11T17:47:45.896Z",
-      "end": "2020-05-11T17:50:08.874Z",
+      "title": "order item with pickup",
+      "duration": 248900,
+      "start": "2020-05-12T18:00:22.553Z",
+      "end": "2020-05-12T18:04:31.453Z",
       "tests": [
         {
-          "title": "profile page should contain profile picture",
-          "start": "2020-05-11T17:47:45.897Z",
-          "end": "2020-05-11T17:48:31.954Z",
-          "duration": 46057,
-          "state": "passed",
-          "screenshots": []
-        },
-        {
-          "title": "profile page should contain user info",
-          "start": "2020-05-11T17:48:31.955Z",
-          "end": "2020-05-11T17:49:10.604Z",
-          "duration": 38649,
-          "state": "passed",
-          "screenshots": []
-        },
-        {
-          "title": "edit first and last name, should be changed on profile page",
-          "start": "2020-05-11T17:49:10.605Z",
-          "end": "2020-05-11T17:50:08.865Z",
-          "duration": 58260,
-          "state": "passed",
-          "screenshots": []
-        },
-        {
-          "title": "add aditional email and save",
-          "start": "2020-05-11T17:50:08.873Z",
-          "duration": 0,
-          "state": "skipped"
+          "title": "add order from Marcello's and select pickup",
+          "start": "2020-05-12T18:00:22.555Z",
+          "end": "2020-05-12T18:04:31.451Z",
+          "duration": 248896,
+          "state": "failed",
+          "screenshots": [],
+          "error": {
+            "message": "Error: button | btn btn-success btn-lg did not appear",
+            "stack": "Error: button | btn btn-success btn-lg did not appear\n    at ModalComponent.waitElementForDisplayed (C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\page_objects\\/BasePage.js:22:17)\n    at ModalComponent.selectPickup (C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\page_objects\\components\\/ModalComponent.js:20:14)\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\/order.spec.js:23:39)"
+          }
         }
       ],
       "hooks": []
     }
   ],
   "specs": [
-    "C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\profile.spec.js"
+    "C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\order.spec.js"
   ],
   "state": {
-    "passed": 3,
-    "failed": 0,
-    "skipped": 1
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0
   }
 }
