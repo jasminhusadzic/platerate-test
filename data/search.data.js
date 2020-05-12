@@ -5,5 +5,5 @@ module.exports = {
     thai: 'Thai',
     city: 'New York',
     marchello: 'Marcello’s Ristorante',
-    amrchelloLocation: 'Suffern, NY'
+    marchelloLocation: 'Suffern, NY'
 }
