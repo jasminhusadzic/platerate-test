@@ -6,6 +6,7 @@ class RestaurantPage extends CommonPage {
     get rateSelectedItemButton(){return $("//span[contains(text(), 'Rate selected items')]")};
     get confirmInstructionsButton(){return $("#instruction-confirm")};
     get orderButton(){return $("(//button[contains(@class,'order-this-item')])[1]")};
+    get orderSpinLoader(){return $("//button[contains(@id, 'checkout-or-goto-order')]//i[contains(@class, 'fa fa-refresh fa-spin')]")};
 
     rateMenuItem(){
         this.waitElementForDisplayed(this.rateItemButton);
@@ -25,6 +26,23 @@ class RestaurantPage extends CommonPage {
     order(){
         this.waitElementForDisplayed(this.orderButton);
         this.orderButton.click();
+    }
+
+    isElementHidden(){
+        if(this.orderSpinLoader.getCSSProperty('display') == 'inline-block'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    waitForOrderComplete(){
+        browser.waitUntil(
+            ()=> this.isElementHidden() === false,
+            {
+                timeout: 180000,
+                timeoutMsg: "Loader is not disapear"
+            }
+        )
     }
 
 }

@@ -55,10 +55,10 @@ jobs:
        server_port: 465
        username: platerateqa
        password: jasmin2906
-       subject: Test Automation Report
+       subject: Test Automation Report Search suite
        # Literal body:
        body: Test automation report in attachments!
-       to: jasmin.husadzic@gmail.com, qvnwork@gmail.com, priyahluwalia@gmail.com, sos.daghents@gmail.com
+       to: jasmin.husadzic@gmail.com, qvnwork@gmail.com, priyahluwalia@gmail.com, sos.daghents@gmail.com, vandanachadha@yahoo.com, dev-platerate@googlegroups.com, qa-platerate@googlegroups.com, product-platerate@googlegroups.com
        from: PlateRate QA Automation Department # <user@example.com>
        # Optional content type (defaults to text/plain):
        content_type: text/html
