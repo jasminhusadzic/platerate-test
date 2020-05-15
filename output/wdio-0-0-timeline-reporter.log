@@ -1,6 +1,6 @@
 {
-  "start": "2020-05-13T17:49:35.176Z",
-  "end": "2020-05-13T17:53:15.355Z",
+  "start": "2020-05-14T17:37:58.999Z",
+  "end": "2020-05-14T17:38:34.215Z",
   "capabilities": {
     "acceptInsecureCerts": false,
     "acceptSslCerts": false,
@@ -9,12 +9,12 @@
     "browserName": "chrome",
     "chrome": {
       "chromedriverVersion": "2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a)",
-      "userDataDir": "C:\\Users\\Jaso\\AppData\\Local\\Temp\\scoped_dir11876_594"
+      "userDataDir": "C:\\Users\\Jaso\\AppData\\Local\\Temp\\scoped_dir4156_3791"
     },
     "cssSelectorsEnabled": true,
     "databaseEnabled": false,
     "goog:chromeOptions": {
-      "debuggerAddress": "localhost:55811"
+      "debuggerAddress": "localhost:55751"
     },
     "handlesAlerts": true,
     "hasTouchScreen": false,
@@ -32,50 +32,56 @@
     "unexpectedAlertBehaviour": "",
     "version": "81.0.4044.138",
     "webStorageEnabled": true,
-    "webdriver.remote.sessionid": "4cb660a0d5de0fed3eba284c08f4ef10",
-    "sessionId": "4cb660a0d5de0fed3eba284c08f4ef10"
+    "webdriver.remote.sessionid": "341f0cfefc0140c1c9a25324a62dadf6",
+    "sessionId": "341f0cfefc0140c1c9a25324a62dadf6"
   },
-  "baseUrl": "https://test.platerate.guru",
+  "baseUrl": "https://staging.platerate.guru",
   "framework": "jasmine",
   "mochaOpts": {
     "timeout": 10000
   },
-  "duration": 220179,
+  "duration": 35216,
   "suites": [
     {
       "title": "orders",
-      "duration": 219945,
-      "start": "2020-05-13T17:49:35.185Z",
-      "end": "2020-05-13T17:53:15.130Z",
+      "duration": 35122,
+      "start": "2020-05-14T17:37:59.007Z",
+      "end": "2020-05-14T17:38:34.129Z",
       "tests": [],
       "hooks": []
     },
     {
       "title": "order item with pickup when user is logged",
-      "duration": 219942,
-      "start": "2020-05-13T17:49:35.185Z",
-      "end": "2020-05-13T17:53:15.127Z",
+      "duration": 35120,
+      "start": "2020-05-14T17:37:59.007Z",
+      "end": "2020-05-14T17:38:34.127Z",
       "tests": [
         {
-          "title": "add order from Marcello's and select pickup with tip later",
-          "start": "2020-05-13T17:49:35.186Z",
-          "end": "2020-05-13T17:53:15.125Z",
-          "duration": 219939,
+          "title": "add order from result page and select pickup with tip later",
+          "start": "2020-05-14T17:37:59.009Z",
+          "end": "2020-05-14T17:38:34.123Z",
+          "duration": 35114,
           "state": "passed",
           "screenshots": []
+        },
+        {
+          "title": "add order from Marcello's page and select pickup with tip later",
+          "start": "2020-05-14T17:38:34.124Z",
+          "duration": 0,
+          "state": "skipped"
         }
       ],
       "hooks": []
     },
     {
       "title": "order item with pickup when user not logged",
-      "duration": 2,
-      "start": "2020-05-13T17:53:15.127Z",
-      "end": "2020-05-13T17:53:15.129Z",
+      "duration": 0,
+      "start": "2020-05-14T17:38:34.128Z",
+      "end": "2020-05-14T17:38:34.128Z",
       "tests": [
         {
           "title": "add order from Marcello's and select pickup",
-          "start": "2020-05-13T17:53:15.129Z",
+          "start": "2020-05-14T17:38:34.128Z",
           "duration": 0,
           "state": "skipped"
         }
@@ -89,6 +95,6 @@
   "state": {
     "passed": 1,
     "failed": 0,
-    "skipped": 1
+    "skipped": 2
   }
 }
