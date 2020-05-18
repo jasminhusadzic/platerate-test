@@ -11,6 +11,9 @@ switch(ENV){
     case 'staging':
         baseUrl = "https://staging.platerate.guru";
         break;
+    case 'prod':
+        baseUrl = "https://platerate.com";
+        break;
 }
 
 exports.config = {

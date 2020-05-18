@@ -49,25 +49,25 @@ describe("orders", ()=>{
             browser.clearSessionStorage();
         });
         
-        it("add order from Marcello's page and select pickup with tip later",()=>{
+        fit("add order from Marcello's page and select pickup with tip later",()=>{
             HomePage.search(SearchData.marchello, SearchData.marchelloLocation);
             HomePage.clickOnRestaurantTab();
             HomePage.clickOnViewRestaurant();
-           // RestaurantPage.confirmInstructions();
             RestaurantPage.order();
             RestaurantPage.modalComponent.addToOrder(); 
+            RestaurantPage.modalComponent.selectPickup();
             RestaurantPage.waitForOrderComplete();
-            browser.pause(5000);
+            RestaurantPage.clickOnMyOrder();
         });
 
-        fit("add order from result page and select pickup with tip later",()=>{
+        it("add order from result page and select pickup with tip later",()=>{
             HomePage.search(SearchData.marchello, SearchData.marchelloLocation);
             HomePage.clickOnFoodAndDrinkTab();
             HomePage.searchResults.clickOnOrder();
+
             
         
             //RestaurantPage.waitForOrderComplete();
-            browser.pause(5000);
         });
 
 
