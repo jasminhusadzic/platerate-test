@@ -34,8 +34,8 @@ class LoginPage extends CommonPage {
 
     waitForCart(){
         HomePage.cart.waitForDisplayed({
-            timeout: 20000,
-            timeoutMsg: "Cart is not displayed in 20 seconds"
+            timeout: 180000,
+            timeoutMsg: "Cart is not displayed in 3 minutes"
         });
     }
 

@@ -53,10 +53,11 @@ describe("orders", ()=>{
             HomePage.search(SearchData.marchello, SearchData.marchelloLocation);
             HomePage.clickOnRestaurantTab();
             HomePage.clickOnViewRestaurant();
+            RestaurantPage.confirmInstructions();
             RestaurantPage.order();
             RestaurantPage.modalComponent.addToOrder(); 
-            RestaurantPage.modalComponent.selectPickup();
             RestaurantPage.waitForOrderComplete();
+            //RestaurantPage.modalComponent.selectPickup();
             RestaurantPage.clickOnMyOrder();
         });
 

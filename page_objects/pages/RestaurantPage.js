@@ -20,8 +20,13 @@ class RestaurantPage extends CommonPage {
     }
 
     confirmInstructions(){
-        this.waitElementForDisplayed(this.confirmInstructionsButton);
-        this.confirmInstructionsButton.click();
+        try{
+            this.waitElementForDisplayed(this.confirmInstructionsButton);
+            this.confirmInstructionsButton.click();
+        } catch (err){
+            console.log(err);
+        }
+        
     }
 
     order(){
@@ -32,14 +37,15 @@ class RestaurantPage extends CommonPage {
     isElementHidden(){
         this.waitElementForDisplayed(this.orderSpinLoader);
         if(this.orderSpinLoader.getCSSProperty('display') == 'inline-block'){
-            return true;
-        }else{
             return false;
+        }else if (this.orderSpinLoader.getCSSProperty('display') == 'none'){
+            return true;
         }
     }
+
     waitForOrderComplete(){
         browser.waitUntil(
-            ()=> this.isElementHidden() === false,
+            ()=> this.isElementHidden() === true,
             {
                 timeout: 180000,
                 timeoutMsg: "Loader is not disapear"
