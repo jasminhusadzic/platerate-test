@@ -1,0 +1,104 @@
+{
+  "start": "2020-05-19T19:58:02.855Z",
+  "end": "2020-05-19T20:02:49.712Z",
+  "capabilities": {
+    "acceptInsecureCerts": false,
+    "acceptSslCerts": false,
+    "applicationCacheEnabled": false,
+    "browserConnectionEnabled": false,
+    "browserName": "chrome",
+    "chrome": {
+      "chromedriverVersion": "2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a)",
+      "userDataDir": "C:\\Users\\Jaso\\AppData\\Local\\Temp\\scoped_dir5740_22282"
+    },
+    "cssSelectorsEnabled": true,
+    "databaseEnabled": false,
+    "goog:chromeOptions": {
+      "debuggerAddress": "localhost:56462"
+    },
+    "handlesAlerts": true,
+    "hasTouchScreen": false,
+    "javascriptEnabled": true,
+    "locationContextEnabled": true,
+    "mobileEmulationEnabled": false,
+    "nativeEvents": true,
+    "networkConnectionEnabled": false,
+    "pageLoadStrategy": "normal",
+    "platform": "Windows NT",
+    "rotatable": false,
+    "setWindowRect": true,
+    "takesHeapSnapshot": true,
+    "takesScreenshot": true,
+    "unexpectedAlertBehaviour": "",
+    "version": "81.0.4044.138",
+    "webStorageEnabled": true,
+    "webdriver.remote.sessionid": "8b7ef074b76f195728e3b7e2da79798d",
+    "sessionId": "8b7ef074b76f195728e3b7e2da79798d"
+  },
+  "baseUrl": "https://test.platerate.guru",
+  "framework": "jasmine",
+  "mochaOpts": {
+    "timeout": 10000
+  },
+  "duration": 286857,
+  "suites": [
+    {
+      "title": "orders",
+      "duration": 286556,
+      "start": "2020-05-19T19:58:02.863Z",
+      "end": "2020-05-19T20:02:49.419Z",
+      "tests": [],
+      "hooks": []
+    },
+    {
+      "title": "order item with pickup when user is logged",
+      "duration": 286553,
+      "start": "2020-05-19T19:58:02.863Z",
+      "end": "2020-05-19T20:02:49.416Z",
+      "tests": [
+        {
+          "title": "add order from Marcello's page and select pickup with tip later",
+          "start": "2020-05-19T19:58:02.865Z",
+          "end": "2020-05-19T20:02:49.409Z",
+          "duration": 286544,
+          "state": "failed",
+          "screenshots": [],
+          "error": {
+            "message": "Error: Loader is not disapear",
+            "stack": "Error: Loader is not disapear\n    at RestaurantPage.waitForOrderComplete (C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\page_objects\\pages\\/RestaurantPage.js:47:17)\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\/order.spec.js:59:28)"
+          }
+        },
+        {
+          "title": "add order from result page and select pickup with tip later",
+          "start": "2020-05-19T20:02:49.412Z",
+          "duration": 0,
+          "state": "skipped"
+        }
+      ],
+      "hooks": []
+    },
+    {
+      "title": "order item with pickup when user not logged",
+      "duration": 1,
+      "start": "2020-05-19T20:02:49.418Z",
+      "end": "2020-05-19T20:02:49.419Z",
+      "tests": [
+        {
+          "title": "add order from Marcello's and select pickup",
+          "start": "2020-05-19T20:02:49.418Z",
+          "duration": 0,
+          "state": "skipped"
+        }
+      ],
+      "hooks": []
+    }
+  ],
+  "specs": [
+    "C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\order.spec.js"
+  ],
+  "state": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 2
+  }
+}

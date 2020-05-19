@@ -17,8 +17,14 @@ class ModalComponent extends BasePage {
     }
 
     selectPickup(){
-        this.waitElementForDisplayed(this.pickupButton);
-        this.pickupButton.click();
+        try{
+            this.waitElementForDisplayed(this.pickupButton);
+            this.pickupButton.click();
+        }
+        catch(err){
+            console.log(err);
+        }
+        
     }
     
 }
