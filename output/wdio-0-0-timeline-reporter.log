@@ -1,6 +1,6 @@
 {
-  "start": "2020-05-19T19:58:02.855Z",
-  "end": "2020-05-19T20:02:49.712Z",
+  "start": "2020-05-25T17:12:39.440Z",
+  "end": "2020-05-25T17:13:15.630Z",
   "capabilities": {
     "acceptInsecureCerts": false,
     "acceptSslCerts": false,
@@ -9,12 +9,12 @@
     "browserName": "chrome",
     "chrome": {
       "chromedriverVersion": "2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a)",
-      "userDataDir": "C:\\Users\\Jaso\\AppData\\Local\\Temp\\scoped_dir5740_22282"
+      "userDataDir": "C:\\Users\\Jaso\\AppData\\Local\\Temp\\scoped_dir8552_29935"
     },
     "cssSelectorsEnabled": true,
     "databaseEnabled": false,
     "goog:chromeOptions": {
-      "debuggerAddress": "localhost:56462"
+      "debuggerAddress": "localhost:59592"
     },
     "handlesAlerts": true,
     "hasTouchScreen": false,
@@ -30,62 +30,47 @@
     "takesHeapSnapshot": true,
     "takesScreenshot": true,
     "unexpectedAlertBehaviour": "",
-    "version": "81.0.4044.138",
+    "version": "83.0.4103.61",
     "webStorageEnabled": true,
-    "webdriver.remote.sessionid": "8b7ef074b76f195728e3b7e2da79798d",
-    "sessionId": "8b7ef074b76f195728e3b7e2da79798d"
+    "webdriver.remote.sessionid": "df75e64880a2d529620811aee6872941",
+    "sessionId": "df75e64880a2d529620811aee6872941"
   },
-  "baseUrl": "https://test.platerate.guru",
+  "baseUrl": "https://staging.platerate.guru",
   "framework": "jasmine",
   "mochaOpts": {
     "timeout": 10000
   },
-  "duration": 286857,
+  "duration": 36190,
   "suites": [
     {
-      "title": "orders",
-      "duration": 286556,
-      "start": "2020-05-19T19:58:02.863Z",
-      "end": "2020-05-19T20:02:49.419Z",
-      "tests": [],
-      "hooks": []
-    },
-    {
-      "title": "order item with pickup when user is logged",
-      "duration": 286553,
-      "start": "2020-05-19T19:58:02.863Z",
-      "end": "2020-05-19T20:02:49.416Z",
+      "title": "User profile test suite",
+      "duration": 35908,
+      "start": "2020-05-25T17:12:39.448Z",
+      "end": "2020-05-25T17:13:15.356Z",
       "tests": [
         {
-          "title": "add order from Marcello's page and select pickup with tip later",
-          "start": "2020-05-19T19:58:02.865Z",
-          "end": "2020-05-19T20:02:49.409Z",
-          "duration": 286544,
-          "state": "failed",
-          "screenshots": [],
-          "error": {
-            "message": "Error: Loader is not disapear",
-            "stack": "Error: Loader is not disapear\n    at RestaurantPage.waitForOrderComplete (C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\page_objects\\pages\\/RestaurantPage.js:47:17)\n    at UserContext.<anonymous> (C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\/order.spec.js:59:28)"
-          }
+          "title": "add aditional email and save",
+          "start": "2020-05-25T17:12:39.450Z",
+          "end": "2020-05-25T17:13:15.351Z",
+          "duration": 35901,
+          "state": "passed",
+          "screenshots": []
         },
         {
-          "title": "add order from result page and select pickup with tip later",
-          "start": "2020-05-19T20:02:49.412Z",
+          "title": "profile page should contain profile picture",
+          "start": "2020-05-25T17:13:15.352Z",
           "duration": 0,
           "state": "skipped"
-        }
-      ],
-      "hooks": []
-    },
-    {
-      "title": "order item with pickup when user not logged",
-      "duration": 1,
-      "start": "2020-05-19T20:02:49.418Z",
-      "end": "2020-05-19T20:02:49.419Z",
-      "tests": [
+        },
         {
-          "title": "add order from Marcello's and select pickup",
-          "start": "2020-05-19T20:02:49.418Z",
+          "title": "profile page should contain user info",
+          "start": "2020-05-25T17:13:15.353Z",
+          "duration": 0,
+          "state": "skipped"
+        },
+        {
+          "title": "edit first and last name, should be changed on profile page",
+          "start": "2020-05-25T17:13:15.354Z",
           "duration": 0,
           "state": "skipped"
         }
@@ -94,11 +79,11 @@
     }
   ],
   "specs": [
-    "C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\order.spec.js"
+    "C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\profile.spec.js"
   ],
   "state": {
-    "passed": 0,
-    "failed": 1,
-    "skipped": 2
+    "passed": 1,
+    "failed": 0,
+    "skipped": 3
   }
 }
