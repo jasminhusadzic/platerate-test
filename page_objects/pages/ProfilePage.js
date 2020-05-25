@@ -90,16 +90,28 @@ class ProfilePage extends CommonPage {
         console.log(browser.elements(selector));
     }
 
+    generateRandomEmail(baseEmail){
+        let r = Math.random().toString(36).substring(7);
+        let email = baseEmail.replace("<replace>", r);
+        return email;
+    }
+
     addAditionalEmail(additionaEmail){
+        let email = this.generateRandomEmail(additionaEmail);
         this.clickOnPersonalInformation();
         this.waitForElementDisplayed(this.nameEmailPhone);
         this.clickOnNameEmailPhone();
         this.waitForElementDisplayed(this.firstName); 
         this.additionalEmailButton.click();
         this.waitForElementDisplayed(this.additionalEmailInput);
-        this.additionalEmailInput.setValue(additionaEmail);
+        this.additionalEmailInput.setValue(email);
         this.saveAdditionalEmailButton.click();
-        this.waitForElementDisplayed($("//input[@value='" + additionaEmail + "' and @type='text']"));
+        this.waitForElementDisplayed($("//input[@value='" + email + "' and @type='text']"));
+    }
+
+    countEmails(){
+        let emails = browser.$$("#secondaryemail");
+        return emails.length;
     }
 }
 export default new ProfilePage();

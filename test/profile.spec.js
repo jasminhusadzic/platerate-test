@@ -1,6 +1,7 @@
 import HomePage from "../page_objects/pages/HomePage";
 import LoginPage from "../page_objects/pages/LoginPage";
 import ProfilePage from "../page_objects/pages/ProfilePage";
+import LoginData from '../data/login.data';
 
 describe("User profile test suite", ()=>{
     
@@ -37,11 +38,10 @@ describe("User profile test suite", ()=>{
 
     })
 
-    xit("add aditional email and save", ()=>{
+    fit("add aditional email and save", ()=>{
         ProfilePage.open();
-        ProfilePage.addAditionalEmail('dodatn22i@email.com');
-        expect($('#secondaryemail').getAttribute('value')).toContain('nesto');
+        let currentEmails = ProfilePage.countEmails();
+        ProfilePage.addAditionalEmail(LoginData.additionalEmail);
+        expect(ProfilePage.countEmails()).toEqual(currentEmails + 1);
     })
-
-
 });
