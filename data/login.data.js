@@ -3,5 +3,7 @@ module.exports = {
     password: 'test123',
     paypalEmail: 'garrett-buyer@platerate.guru',
     paypalPassword: 'plateR8!!',
-    additionalEmail: '<replace>.test@gmail.com'
+    additionalEmail: '<replace>.test@gmail.com',
+    salePerson: 'sales@platerate.com',
+    passwordUniversal: '121212'
 }
