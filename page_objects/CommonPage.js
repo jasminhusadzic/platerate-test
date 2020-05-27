@@ -1,6 +1,7 @@
 import SearchResults from './components/SearchResults';
 import ModalComponent from './components/ModalComponent';
 import BasePage from './BasePage';
+import MenuComponent from './components/MenuComponent';
 
 
 class CommonPage extends BasePage {
@@ -12,6 +13,10 @@ class CommonPage extends BasePage {
 
     get modalComponent(){
         return ModalComponent;
+    }
+
+    get menuComponent(){
+        return MenuComponent;
     }
 
    
