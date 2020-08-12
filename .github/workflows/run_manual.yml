@@ -1,5 +1,4 @@
-name: Scheduled Reports
-
+name: Manual Run
 on:
   workflow_dispatch:
   
