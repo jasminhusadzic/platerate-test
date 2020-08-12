@@ -27,13 +27,7 @@ jobs:
       run: npm install
     - name: Run tests on test environment
       if: always()
-      run: ENV=test npm run suite home
-    - name: Run tests on staging environment
-      if: always()
-      run: ENV=staging npm run suite home
-    - name: Run tests on production environment
-      if: always()
-      run: ENV=prod npm run suite home
+      run: ENV=test npm run test
     - name: Upload report
       if: always()
       uses: actions/upload-artifact@v2-preview
