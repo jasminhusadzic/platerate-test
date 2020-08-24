@@ -13,9 +13,35 @@ jobs:
         - name: Test
           uses: ianwalter/puppeteer@master
           with:
-            args: npm run test:local
+            args: ENV=test npm run suite home
         - uses: actions/upload-artifact@v1
           if: failure()
           with:
-            name: logs
-            path: logs
+            name: report
+            path: ./output/*.html
+  email:
+   if: always()
+   needs: [build] 
+   runs-on: ubuntu-latest
+   steps:
+    - name: Download report
+      uses: actions/download-artifact@v2-preview
+      with:
+          name: report
+          path: ./ready
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v2
+      with:
+       server_address: smtp.gmail.com
+       server_port: 465
+       username: platerateqa
+       password: jasmin2906
+       subject: Test Automation Report Search suite
+       # Literal body:
+       body: Test automation report in attachments!
+       to: jasmin.husadzic@gmail.com
+       from: PlateRate QA Automation Department # <user@example.com>
+       # Optional content type (defaults to text/plain):
+       content_type: text/html
+       # Optional attachments:
+       attachments: ./ready/test_report.html
