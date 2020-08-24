@@ -42,11 +42,22 @@ exports.config = {
         // 'path/to/excluded/files'
     ],
     suites: {
+        splashscreen: [
+            './test/splashscreen.spec.js'
+        ],
         home: [
             './test/home.spec.js'
         ],
         login: [
             './test/login.spec.js'
+        ],
+        
+        signup: [
+            './test/signup.spec.js'
+        ],
+
+        forgotPassword: [
+            './test/forgotpassword.spec.js'
         ],
         profile: [
             './test/profile.spec.js'
@@ -56,6 +67,12 @@ exports.config = {
         ],
         order: [
             './test/order.spec.js'
+        ],
+        menu: [
+            './test/menu.spec.js'
+        ],
+        saleperson: [
+            './test/saleperson.spec.js'
         ]
     },
     //
@@ -89,7 +106,15 @@ exports.config = {
         //
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['incognito', '--window-size=1920,1080','headless', 'disable-gpu'],
+            args: [
+                'incognito',
+                '--window-size=1920,1080',
+                'headless',
+                'disable-gpu'
+                ],
+            prefs: {
+                "profile.default_content_setting_values.geolocation":2,
+                }  
             },
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.

@@ -8,6 +8,7 @@
     "suite": "./node_modules/.bin/wdio wdio.conf.js --suite"
   },
   "author": "Jasmin Husadzic",
+  "author name": "Waqas Zulfiqar",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -33,6 +34,18 @@
     "expect-webdriverio": "^1.0.0",
     "selenium-standalone": "^6.17.0",
     "wdio-html-reporter": "^1.0.2",
-    "wdio-timeline-reporter": "^5.1.2"
-  }
+    "wdio-timeline-reporter": "^5.1.4"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glassnor/PlateRate-Tester.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/glassnor/PlateRate-Tester/issues"
+  },
+  "homepage": "https://github.com/glassnor/PlateRate-Tester#readme"
 }

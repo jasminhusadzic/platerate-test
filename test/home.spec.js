@@ -1,17 +1,28 @@
 import HomePage from '../page_objects/pages/HomePage';
 import LoginPage from '../page_objects/pages/LoginPage';
+import SignUpPage from '../page_objects/pages/SignUpPage'
 import ProfilePage from '../page_objects/pages/ProfilePage';
 import LoginData from '../data/login.data';
 import SearchData from '../data/search.data';
 import RestaurantPage from '../page_objects/pages/RestaurantPage';
-
+import {validAccountLogin} from '../data/credentials';
 describe("home page suite", ()=>{
     beforeEach(()=>{
         HomePage.open();
-        HomePage.prepareHome();
+        //HomePage.prepareHome();
+    });
+
+    afterEach(()=>{
+        browser.deleteAllCookies();
     });
 
     describe("search when user not logged", ()=>{
+
+        beforeEach(()=>{
+            HomePage.open();
+            HomePage.prepareHome();
+        });
+
         afterEach(()=>{
             browser.deleteAllCookies();
             browser.clearSessionStorage();
@@ -70,6 +81,7 @@ describe("home page suite", ()=>{
     describe("search when user is logged", ()=>{
         beforeEach(()=>{
             LoginPage.open();
+            HomePage.prepareHome();
             LoginPage.login(LoginData.email, LoginData.password);
             LoginPage.waitForCart();
             expect(HomePage.cart).toBeDisplayed;
@@ -137,6 +149,7 @@ describe("home page suite", ()=>{
     describe("advanced search with food filter", ()=>{
         beforeEach(()=>{
             LoginPage.open();
+            HomePage.prepareHome();
             LoginPage.login(LoginData.email, LoginData.password);
             LoginPage.waitForCart();
             expect(HomePage.cart).toBeDisplayed;
@@ -159,9 +172,15 @@ describe("home page suite", ()=>{
             HomePage.reportDuration(duration);
         });
 
+
     });
 
     describe("open restaurant page when user not logged", ()=>{
+
+        beforeEach(()=>{
+            HomePage.open();
+            HomePage.prepareHome();
+        });
 
         afterEach(()=>{
             if(HomePage.cart.isDisplayed()){
@@ -184,6 +203,7 @@ describe("home page suite", ()=>{
 
         beforeEach(()=>{
             LoginPage.open();
+            HomePage.prepareHome();
             LoginPage.login(LoginData.email, LoginData.password);
             LoginPage.waitForCart();
             expect(HomePage.cart).toBeDisplayed;
@@ -209,6 +229,7 @@ describe("home page suite", ()=>{
     describe("rate item", ()=>{
         beforeEach(()=>{
             LoginPage.open();
+            HomePage.prepareHome();
             LoginPage.login(LoginData.email, LoginData.password);
             LoginPage.waitForCart();
             expect(HomePage.cart).toBeDisplayed;
@@ -234,4 +255,34 @@ describe("home page suite", ()=>{
 
     });
     
-})
+            it("search item with location enterd", ()=>{
+                HomePage.searchItem(SearchData.chicken, SearchData.city);
+                expect(HomePage.resultInfoHeader).toBeDisplayed;
+            });
+
+            it("should go to the About us page and verify the page title", ()=>{
+                HomePage.gotoAboutUspage();
+                expect(HomePage.aboutUsPageTitle.getText()).toContain('About PlateRate');
+            });
+
+            it("should go to the Reward page and verify the page title", ()=>{
+                HomePage.gotoRewardsPage();
+                expect(HomePage.rewardPageTitle.getText()).toContain('PlateRate Rewards');
+            });
+
+            it("should go to the login page and verify the page title", ()=>{
+                HomePage.goToLoginPage();
+                expect(LoginPage.email).toBeDisplayed;
+            });
+
+            it("should go to the create account page and verify the page title", ()=>{
+                HomePage.goToSignUpPage();
+                expect(SignUpPage.signUpPageTitle.getText()).toContain('Create Account');
+            });
+
+            it("enter email and subscribe", ()=>{
+                HomePage.subscribeAndGetUpdate(validAccountLogin);
+                expect(HomePage.updatesAndOfferSuccessMessage.isDisplayed());
+            });
+    
+});

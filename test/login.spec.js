@@ -21,8 +21,12 @@ describe('login suite', () => {
   
         it('login with invalid credentials error message should appear', () => {   
             LoginPage.login('tom@test.com', 'supersifra');
+            LoginPage.alertMessage.waitForDisplayed({
+                timeout: 10000,
+                timeoutMsg: "no invalid credentials error in 10 seconds"
+            });
             expect(LoginPage.alertMessage.getText()).toContain('This email is not registered');
-        })
+        })    
   
         it("login with valid credentials home page should appear with shopping cart in top right corner", () => {
             LoginPage.login('jasmin.husadzic@gmail.com', 'test123'); 
@@ -37,7 +41,7 @@ describe('login suite', () => {
         afterEach(()=>{
             browser.deleteAllCookies();
         })
-
+   
     })
 
     describe('login as sale person', ()=>{
@@ -49,12 +53,21 @@ describe('login suite', () => {
                 browser.deleteAllCookies();
             });
 
-            fit('check saleperson settings exist', ()=>{
+            it('check saleperson settings exist', ()=>{
                 LoginPage.login(LoginData.salePerson, LoginData.passwordUniversal); 
                 expect(HomePage.cart).toBeDisplayed;
                 HomePage.menuComponent.openMenu();
                 browser.pause(3000);
                 expect(HomePage.menuComponent.menu.getText()).toContain('Salesperson Settings');
+            })
+
+            it("try to login with invalid credentials error should appear", ()=>{
+                LoginPage.login(LoginData.salePerson, LoginData.invalidPassword);
+                LoginPage.alertMessage.waitForDisplayed({
+                timeout: 10000,
+                timeoutMsg: "no invalid credentials error in 10 seconds"
+                });
+                expect(LoginPage.alertMessage.getText()).toContain('Oops! Wrong password.');
             })
 
     })

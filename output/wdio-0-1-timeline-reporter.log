@@ -1,0 +1,100 @@
+{
+  "start": "2020-06-01T18:27:12.766Z",
+  "end": "2020-06-01T18:28:15.095Z",
+  "capabilities": {
+    "acceptInsecureCerts": false,
+    "acceptSslCerts": false,
+    "applicationCacheEnabled": false,
+    "browserConnectionEnabled": false,
+    "browserName": "chrome",
+    "chrome": {
+      "chromedriverVersion": "2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a)",
+      "userDataDir": "C:\\Users\\Jaso\\AppData\\Local\\Temp\\scoped_dir7100_5490"
+    },
+    "cssSelectorsEnabled": true,
+    "databaseEnabled": false,
+    "goog:chromeOptions": {
+      "debuggerAddress": "localhost:58861"
+    },
+    "handlesAlerts": true,
+    "hasTouchScreen": false,
+    "javascriptEnabled": true,
+    "locationContextEnabled": true,
+    "mobileEmulationEnabled": false,
+    "nativeEvents": true,
+    "networkConnectionEnabled": false,
+    "pageLoadStrategy": "normal",
+    "platform": "Windows NT",
+    "rotatable": false,
+    "setWindowRect": true,
+    "takesHeapSnapshot": true,
+    "takesScreenshot": true,
+    "unexpectedAlertBehaviour": "",
+    "version": "83.0.4103.61",
+    "webStorageEnabled": true,
+    "webdriver.remote.sessionid": "2f592df024c5838e009a8aa0437d11a5",
+    "sessionId": "2f592df024c5838e009a8aa0437d11a5"
+  },
+  "baseUrl": "https://staging.platerate.guru",
+  "framework": "jasmine",
+  "mochaOpts": {
+    "timeout": 10000
+  },
+  "duration": 62329,
+  "suites": [
+    {
+      "title": "login suite",
+      "duration": 61046,
+      "start": "2020-06-01T18:27:12.785Z",
+      "end": "2020-06-01T18:28:13.831Z",
+      "tests": [],
+      "hooks": []
+    },
+    {
+      "title": "login as sale person",
+      "duration": 61039,
+      "start": "2020-06-01T18:27:12.786Z",
+      "end": "2020-06-01T18:28:13.825Z",
+      "tests": [
+        {
+          "title": "check saleperson settings exist",
+          "start": "2020-06-01T18:27:12.787Z",
+          "end": "2020-06-01T18:28:13.823Z",
+          "duration": 61036,
+          "state": "passed",
+          "screenshots": []
+        }
+      ],
+      "hooks": []
+    },
+    {
+      "title": "login as user",
+      "duration": 5,
+      "start": "2020-06-01T18:28:13.826Z",
+      "end": "2020-06-01T18:28:13.831Z",
+      "tests": [
+        {
+          "title": "login with invalid credentials error message should appear",
+          "start": "2020-06-01T18:28:13.830Z",
+          "duration": 0,
+          "state": "skipped"
+        },
+        {
+          "title": "login with valid credentials home page should appear with shopping cart in top right corner",
+          "start": "2020-06-01T18:28:13.830Z",
+          "duration": 0,
+          "state": "skipped"
+        }
+      ],
+      "hooks": []
+    }
+  ],
+  "specs": [
+    "C:\\Users\\Jaso\\Documents\\GitHub\\platerate-testing-test\\platerate-testing-test\\test\\login.spec.js"
+  ],
+  "state": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 2
+  }
+}
