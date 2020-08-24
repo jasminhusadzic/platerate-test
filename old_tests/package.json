@@ -1,0 +1,24 @@
+{
+  "name": "regressiontester",
+  "version": "1.0.0",
+  "description": "A Node utility made for headless browser testing with Puppeteer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Puppeteer",
+    "Regression",
+    "testing"
+  ],
+  "author": "paco",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "puppeteer": "^1.5.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0"
+  }
+}
