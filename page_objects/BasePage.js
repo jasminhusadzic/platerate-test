@@ -25,8 +25,22 @@ class BasePage {
         })
     }
 
+    getPageTitle() {
+        return browser.getTitle();
+    }
+
+    selectOption(selectElement, option) {
+        this.waitElementForDisplayed(selectElement);
+        selectElement.selectByAttribute('value', option);
+    }
+
+    clickElement(element) {
+        this.waitElementForDisplayed(element);
+        element.click();
+    }
+
     generateMoment(){
-        return moment().format('YYYYDDMM');
+        return moment().format('YYYYDDMMhhmm');
     }
 }
 

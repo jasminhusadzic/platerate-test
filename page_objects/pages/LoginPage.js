@@ -5,7 +5,7 @@ class LoginPage extends CommonPage {
 
     get email() {return $('#email');}
     get password() {return $('#password');}
-    get submitBtn() {return $('button[type=submit]');}
+    get submitBtn() {return $('button*=Log In');}
     get alertMessage() {return $('#error');}
     get facebookButton() {return $('#btn-login-facebook')};
     get facebookEmail() {return $('#email')};
@@ -13,9 +13,10 @@ class LoginPage extends CommonPage {
     get facebookLogIn() {return $('#loginbutton')};
     get createAccountButton() {return $("//button[contains(text(), 'Create Account')]")};
     get registrationSuccess() {return $("//h2[contains(text(), 'Registration Success!')]")};
-    
+
     open(){
         super.open('users/login?next=/');
+
     }
 
     login(email, password){

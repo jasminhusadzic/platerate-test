@@ -1,9 +1,12 @@
 import HomePage from "../page_objects/pages/HomePage";
 import LoginPage from "../page_objects/pages/LoginPage";
+import WebMailPage from "../page_objects/pages/WebMailPage";
+import LoginData from "../data/login.data";
 
 describe('User Creation and login',()=>{
     beforeEach(()=>{
        LoginPage.open();
+       HomePage.prepareHome();
     })
 
     afterEach(()=>{
@@ -11,8 +14,11 @@ describe('User Creation and login',()=>{
         browser.clearSessionStorage();
     })
 
-    it('create and verify user', ()=>{
+    fit('create and verify user', ()=>{
         LoginPage.createAccount(LoginPage.generateMoment(), 'user');
+        WebMailPage.openWebMail();
+        WebMailPage.login(LoginData.botEmail, LoginData.passwordUniversal);
+        browser.pause(5000);
     });
 
     it('create and verify sales', ()=>{
