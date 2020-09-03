@@ -10,7 +10,7 @@ jobs:
         run: |
           echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
       - name: PONG - Dispatch response to received PING
-        if: github.event.action == 'ping'
+        if: github.event.action == 'ping_master'
         run: |
           curl -X POST https://api.github.com/repos/jasminhusadzic/platerate-staging-test/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
@@ -38,9 +38,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install
       run: npm install
-    - name: Run tests on test environment
-      if: always()
-      run: ENV=test npm run test
     - name: Run tests on staging environment
       if: always()
       run: ENV=staging npm run test
