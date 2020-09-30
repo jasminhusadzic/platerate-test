@@ -3,10 +3,11 @@ import LoginPage from "../page_objects/pages/LoginPage";
 import LoginData from '../data/login.data';
 import SearchData from '../data/search.data';
 import AboutPage from "../page_objects/pages/MenuPages/AboutPage";
+import ProfilePage from "../page_objects/pages/ProfilePage";
 
 describe("Hamburger menu test suite", ()=>{
 
-    beforeEach(()=>{
+    beforeAll(()=>{
         HomePage.open();
         HomePage.prepareHome();
     })
@@ -19,8 +20,9 @@ describe("Hamburger menu test suite", ()=>{
         })
 
         afterEach(()=>{
-            browser.deleteAllCookies();
-            browser.clearSessionStorage();
+            if(HomePage.cart.isDisplayed()){
+                ProfilePage.logout();
+            }
         })
 
         it("search photo gallery for Suffern NY with minimum radius results should appear", ()=>{
@@ -43,7 +45,7 @@ describe("Hamburger menu test suite", ()=>{
             
         })
 
-        fit("search photo gallery for Suffern NT with maximum radis results should appear", ()=>{
+        it("search photo gallery for Suffern NT with maximum radis results should appear", ()=>{
             HomePage.menuComponent.openMenu();
             HomePage.menuComponent.openFindingFood();
             HomePage.menuComponent.openPhotoGallery();
@@ -100,8 +102,9 @@ describe("Hamburger menu test suite", ()=>{
         })
 
         afterEach(()=>{
-            browser.deleteAllCookies();
-            browser.clearSessionStorage();
+            if(HomePage.cart.isDisplayed()){
+                ProfilePage.logout();
+            }
         })
 
         it("open about platerate and check basic layout", ()=>{
@@ -110,10 +113,6 @@ describe("Hamburger menu test suite", ()=>{
             HomePage.menuComponent.openAboutPlateRate();
             AboutPage.waitElementForDisplayed(AboutPage.contentTitle);
             expect(AboutPage.getPageTitle()).toContain("About PlateRate");
-        })
-
-        it("open rewards and check basic layout", ()=>{
-        
         })
     })
 

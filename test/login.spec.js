@@ -1,11 +1,12 @@
 import LoginPage from '../page_objects/pages/LoginPage';
 import HomePage from '../page_objects/pages/HomePage';
 import LoginData from '../data/login.data';
+import ProfilePage from '../page_objects/pages/ProfilePage';
 
 
 describe('login suite', () => {
     
-    beforeEach(()=>{
+   beforeAll (()=>{
         HomePage.open();
         HomePage.prepareHome();
     });
@@ -16,7 +17,9 @@ describe('login suite', () => {
         });
 
         afterEach(()=>{
-            browser.deleteAllCookies();
+            if(HomePage.cart.isDisplayed()){
+                ProfilePage.logout();
+            }
         })
   
         it('login with invalid credentials error message should appear', () => {   
@@ -37,10 +40,6 @@ describe('login suite', () => {
       //     LoginPage.loginWithFacebook('platerateit@gmail.com', 'Thegurus');  
       //     expect(HomePage.cart).toBeDisplayed;
       // })
-  
-        afterEach(()=>{
-            browser.deleteAllCookies();
-        })
    
     })
 
@@ -50,7 +49,9 @@ describe('login suite', () => {
             });
     
             afterEach(()=>{
-                browser.deleteAllCookies();
+                if(HomePage.cart.isDisplayed()){
+                    ProfilePage.logout();
+                }
             });
 
             it('check saleperson settings exist', ()=>{

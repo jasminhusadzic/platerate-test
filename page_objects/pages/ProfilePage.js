@@ -18,6 +18,7 @@ class ProfilePage extends CommonPage {
     get saveAdditionalEmailButton() {return $("//button[contains(text(), 'Save Additional Email')]")};
     get additionalEmailInput() {return $("#additional_emails")};
     get collapseHowYouLikeToEat() {return $("a[href='#collapseHowYouLikeEat']")};
+    get collapseAllPreferences() {return $("#profile-your-preferences-collapse")};
     get collapseDietaryPreferences() {return $("a[href='#collapseTwo']")};
     get collapseSensoryExperience() {return $("a[href='#collapseTa']")};
     get collapseGroupDiningPreferences() {return $("a[href='#collapseGd']")};
@@ -26,11 +27,12 @@ class ProfilePage extends CommonPage {
     get showMoreFoodQuality() {return $('#check_clicked_0')};
     get showMoreAllergies() {return $('#check_clicked_1')};
     get showMoreSpecialDiet() {return $('#check_clicked_2')};
+    get noPreferencesBox() {return $('label.NDP')};
     get noMSGSelect() {return $('#dietvalue_NoMSG')};
     get crueltyFreeSelect() {return $('#dietvalue_CrueltyFree')};
     get lowFatSelect() {return $('#dietvalue_LowFat')};
     get savePrefs() {return $('#save_dietaryPref')};
-    get uncheckAllButton() {return $('[name="uncheckAll"]')}
+    get uncheckAllButton() {return $('#uncheckAllDietaryPrefs')};
     get unverifiedButtons() {return $("//a[contains(text(), 'Un-verified')]")};
     get orderHistoryTypeButtons(){return $$("//ul[contains(@class, 'OrdersHistorys-nav')]/li")};
     get contactInfoHeading(){return $("(//div[@id='collapseOne']//h4)[1]")};
@@ -41,6 +43,7 @@ class ProfilePage extends CommonPage {
     get bySmsCheckbox(){return $("#bySms")};
     get byEmailCheckbox(){return $("#byEmail")};
     get neverContactCheckbox(){return $("#never")};
+    get alertNewUser(){return $("#checkAccountInfo")};
     
     open(){
         super.open('/users/healthy-eating-profile');
@@ -58,37 +61,14 @@ class ProfilePage extends CommonPage {
         );
     }
 
-    preparePreferences() {
+    showAllPreferences() {
         this.clickElement(this.collapseHowYouLikeToEat);
+        this.clickElement(this.collapseAllPreferences);
     }
 
     waitForElementDisplayed(element){
         element.waitForDisplayed({
             timeout: 60000,
-            timeoutMsg: 'Did not appear before 60 seconds'
-        });
-    }
-    
-    waitForElementNotDisplayed(element){
-        element.waitForDisplayed({
-            timeout: 60000,
-            reverse: true,
-            timeoutMsg: 'Did appear before 60 seconds'
-        });
-    }
-
-    waitForElementClickable(element){
-        element.waitForClickable({
-            timeout: 60000,
-            timeoutMsg: 'Did not appear before 60 seconds'
-        })
-    }
-    
-
-    waitForElementNotClickable(element){
-        element.waitForClickable({
-            timeout: 60000,
-            reverse: true,
             timeoutMsg: 'Did not appear before 60 seconds'
         });
     }
@@ -149,11 +129,11 @@ class ProfilePage extends CommonPage {
         this.clickOnPersonalInformation();
         this.waitForElementDisplayed(this.nameEmailPhone);
         this.clickOnNameEmailPhone();
-        this.waitForElementDisplayed(this.firstName); 
-        this.additionalEmailButton.click();
+        this.waitForElementDisplayed(this.firstName);
+        this.clickElement(this.additionalEmailButton);
         this.waitForElementDisplayed(this.additionalEmailInput);
         this.additionalEmailInput.setValue(email);
-        this.saveAdditionalEmailButton.click();
+        this.clickElement(this.saveAdditionalEmailButton);
         this.waitForElementDisplayed($("//input[@value='" + email + "' and @type='text']"));
     }
     
@@ -193,7 +173,7 @@ class ProfilePage extends CommonPage {
         this.noMSGSelect.waitForDisplayed({
             timeout: 6000,
             reverse: true,
-            timeoutMsg: 'didnt work',
+            timeoutMsg: 'preferences are displayed before collapse',
         });
     }
 
@@ -223,22 +203,34 @@ class ProfilePage extends CommonPage {
     }
 
     savePreferences() {
-        this.waitForElementDisplayed(this.savePrefs);
-        this.savePrefs.click();
+        this.clickElement(this.savePrefs);
     }
     
     setDietaryPreferences() {
-        this.clickElement(this.collapseDietaryPreferences);
         this.selectOption(this.noMSGSelect, 'Mostly');
         this.selectOption(this.crueltyFreeSelect, 'Mostly');
         this.selectOption(this.lowFatSelect, 'Mostly');
         this.savePreferences();
     }
 
+    showDietaryPreferences() {
+        this.clickElement(this.collapseDietaryPreferences);
+    }
+
     clearDietaryPreferences() {
 
-        this.clickElement(this.uncheckAllButton);
+        this.clickElement(this.uncheckAllButton, 'clickable');
         this.savePreferences();
+    }
+
+    toggleDietaryPreferences() {
+        this.clickElement(this.noPreferencesBox, 'clickable');
+        this.savePreferences();
+    }
+
+    getNewUserAlertText(){
+        this.waitElementForDisplayed(this.alertNewUser);
+        return this.alertNewUser.getText();
     }
 }
 

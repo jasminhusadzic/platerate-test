@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/wdio wdio.conf.js",
-    "suite": "./node_modules/.bin/wdio wdio.conf.js --suite"
+    "test:local": "./node_modules/.bin/wdio wdio.local.conf.js",
+    "suite": "wdio wdio.conf.js --suite",
+    "suite:local": "wdio wdio.local.conf.js --suite"
   },
   "author": "Jasmin Husadzic",
   "author name": "Waqas Zulfiqar",
@@ -20,7 +22,7 @@
     "@wdio/jasmine-framework": "^6.0.13",
     "@wdio/local-runner": "^6.0.15",
     "@wdio/mocha-framework": "^6.0.13",
-    "@wdio/selenium-standalone-service": "^6.0.12",
+    "@wdio/selenium-standalone-service": "^6.4.0",
     "@wdio/spec-reporter": "^6.0.12",
     "@wdio/sync": "^6.0.12",
     "chromedriver": "^80.0.2",

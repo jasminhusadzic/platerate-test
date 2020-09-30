@@ -1,6 +1,10 @@
 import { generateEmail } from '../../data/credentials';
+import CommonPage from '../CommonPage';
+import WebMailPage from './WebMailPage';
+import LoginPage from './LoginPage';
+import LoginData from '../../data/login.data';
 
-class SignUpPage {
+class SignUpPage extends CommonPage {
 
     open() {
         browser.url('users/register');
@@ -13,15 +17,15 @@ class SignUpPage {
         return $('//h3[text()="Create Account"]');
     }
     get enterEmail() {
-        return $('#email');
+        return $('#emailphone');
     }
 
     get enterMobileNumber() {
-        return $('#phone');
+        return $('#emailphone');
     }
 
     get createAccountBtn() {
-        return $('#form-registration > div:nth-child(5) > button');
+        return $('#reg-btn-create-account');
     }
 
     get confirmationTick() {
@@ -103,6 +107,18 @@ class SignUpPage {
         return $('#shopping_cart_btn > span > i');
     }
 
+    get passwordInput(){
+        return $("//input[@name='password']");
+    }
+
+    get confirmPasswordInput(){
+        return $("//input[@name='passwordConfirmation']");
+    }
+
+    get setPasswordButton(){
+        return $("//button[@class='btn btn-register btn-sp-green']");
+    }
+
     submitValidCredentials({ email = generateEmail()}) {
         this.enterEmail.setValue(email);
         this.createAccountBtn.click();
@@ -137,7 +153,27 @@ class SignUpPage {
     }
     
     goTOGmail() {
-        this.gmailBtn.click();}
+        this.gmailBtn.click();
+    }
+
+    setPassword(password, confirmPassword){
+        this.waitElementForDisplayed(this.setPasswordButton);
+        this.passwordInput.setValue(password);
+        this.confirmPasswordInput.setValue(confirmPassword);
+        this.setPasswordButton.click();
+    }
+
+    createNewUser(){
+        WebMailPage.openTempWebmail();
+        let webMailUrl = WebMailPage.getCurrentUrl();
+        let email = WebMailPage.getGeneratedEmail();
+        WebMailPage.switchToBase();
+        LoginPage.createAccountWithGeneretedEmail(email);
+        browser.switchWindow(webMailUrl);
+        WebMailPage.confirmWebMailRegistration();
+        this.setPassword(LoginData.password, LoginData.password);
+        this.localStorageWorker.setLocalStorage(email);
+    }
 }
 
 export default new SignUpPage();

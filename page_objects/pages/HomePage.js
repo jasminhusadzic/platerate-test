@@ -1,5 +1,6 @@
 import CommonPage from '../CommonPage'
 import { generateEmail } from '../../data/credentials';
+import SearchData from '../../data/search.data';
 
 class HomePage extends CommonPage {
 
@@ -13,7 +14,7 @@ class HomePage extends CommonPage {
     get acceptCoockiesButton(){return $("#acceptCookies")};
     get neverPlay(){return $('strong*=play again')};
     get modalWrapper(){return $("div.splashmobo")};
-    get skipSplashScreenButton(){return $$("div.splashskip")[1]};
+    get skipSplashScreenButton(){return $("#first-splashskip")};
     get searchInput(){return $('#search')};
     get locationInput(){return $("#head-location-input-search")};
     get inputSwitch(){return $("//div[@class='inputSwitch']/span")}
@@ -25,6 +26,7 @@ class HomePage extends CommonPage {
     get loginCTA(){return $('#logoutNav')};
     get restaurantTab(){return $("//a[@data-key='restaurant']")};
     get foodAndDrinkTab(){return $("//a[@data-key='menuitem']")};
+    get filterLocals(){return $("div.filter_locals_rating")};
     get highestValueCheck(){return $("//label[@for='checkboxValue']")};
     get viewRestaurantButton(){return $("(//div[@class='item-detail-column'])[1]/a")};
     get restaurantInformation(){return $("//div[@class='restaurant_main_infor']")};
@@ -39,7 +41,7 @@ class HomePage extends CommonPage {
     get denyLocationAccessButton(){return $('button.cancel')};
     get signUpButton(){return $('#head-signup');}
     get aboutUsButton(){return $('#head-about-us');}
-    get aboutUsPageTitle(){return $("body > div.accord-box.mr-4.ml-4 > div > div > div > div > header")};
+    get aboutUsPageTitle(){return $("//header//b")};
     get rewardButton(){return $('#head-rewards');}
     get rewardPageTitle(){return $('//h3[text()="PlateRate Rewards"]')};
     get updatesAndOffersEmial(){return $('#mce-EMAIL')};
@@ -57,37 +59,53 @@ class HomePage extends CommonPage {
     }
     
     acceptCoockies(){
-        this.acceptCoockiesButton.click();
+        try {
+            this.waitElementForDisplayed(this.acceptCoockiesButton);
+            this.acceptCoockiesButton.click();
+        } catch (e) {
+            console.log('coockies did not appear')
+        }
+        
     }
+
     skipSplashScreen(){
-        this.waitElementForDisplayed(this.skipSplashScreenButton);
-        this.skipSplashScreenButton.click();
-        this.modalWrapper.waitForDisplayed({
-            timeout: 10000,
+        try {
+            this.waitElementForDisplayed(this.skipSplashScreenButton);
+            this.skipSplashScreenButton.click();
+            this.modalWrapper.waitForDisplayed({
+                timeout: 6000,
+                reverse: true,
+                timeoutMsg: 'Now splash popup is gone'
+            });
+        }
+        catch (error) {
+            console.log('skipped the splash screen')
+        }
+    }
+
+    dontShowLocation(){
+        try {
+            this.clickElement(this.dontShowAgainButton);
+        }catch(error){
+            console.log('modal did not appear');
+        }
+        this.dontShowAgainButton.waitForDisplayed({
+            timeout: 6000,
             reverse: true,
             timeoutMsg: 'Now splash popup is gone'
         });
     }
 
-    dontShowLocation(){
-        try {
-            this.waitElementForDisplayed(this.dontShowAgainButton);
-            this.dontShowAgainButton.click();
-        }catch(error){
-            console.log('modal did not appear');
-        }
-        
+    prepareHome(){
+        this.dontShowLocation();
+        browser.pause(500);
+        this.acceptCoockies(); 
+        browser.pause(500);
+        this.skipSplashScreen();
     }
 
-    prepareHome(){
-        try {
-            this.dontShowLocation();
-            this.skipSplashScreen(); 
-        }
-        catch (error) {
-            console.log('skipped the splash screen')
-        }
-        if(this.acceptCoockiesButton.isDisplayed())this.acceptCoockies(); 
+    cartIsDisplayed() {
+        this.waitElementForDisplayed(this.cart);
     }
 
     clickOnRestaurantTab(){
@@ -157,6 +175,15 @@ class HomePage extends CommonPage {
             this.search(searchTerm, location);
         }
         return ((Date.now() - startTime)/1000);
+    }
+
+    openTestRestaurant() {
+        this.search(SearchData.marchello, SearchData.marchelloLocation);
+        // filterLocals makes it easier to scroll restaurant tab into view
+        // this.dontShowLocation();
+        this.filterLocals.scrollIntoView();
+        this.clickOnRestaurantTab();
+        this.clickOnViewRestaurant();
     }
 
     checkHighestValue(){

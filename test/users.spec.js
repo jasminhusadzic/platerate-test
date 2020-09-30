@@ -1,24 +1,36 @@
 import HomePage from "../page_objects/pages/HomePage";
 import LoginPage from "../page_objects/pages/LoginPage";
 import WebMailPage from "../page_objects/pages/WebMailPage";
-import LoginData from "../data/login.data";
+import LoginData, { email } from "../data/login.data";
+import SignUpPage from "../page_objects/pages/SignUpPage";
+import ProfilePage from "../page_objects/pages/ProfilePage";
 
 describe('User Creation and login',()=>{
-    beforeEach(()=>{
-       LoginPage.open();
+    beforeAll(()=>{
+       HomePage.open();
        HomePage.prepareHome();
     })
 
-    afterEach(()=>{
-        browser.deleteAllCookies();
-        browser.clearSessionStorage();
+    beforeEach(()=>{
+        LoginPage.open();
     })
 
-    fit('create and verify user', ()=>{
-        LoginPage.createAccount(LoginPage.generateMoment(), 'user');
-        WebMailPage.openWebMail();
-        WebMailPage.login(LoginData.botEmail, LoginData.passwordUniversal);
-        browser.pause(5000);
+    afterEach(()=>{
+        if(HomePage.cart.isDisplayed()){
+            ProfilePage.logout();
+        }
+    })
+
+    it('create and verify user', ()=>{
+        WebMailPage.openTempWebmail();
+        let webMailUrl = WebMailPage.getCurrentUrl();
+        let email = WebMailPage.getGeneratedEmail();
+        WebMailPage.switchToBase();
+        LoginPage.createAccountWithGeneretedEmail(email);
+        browser.switchWindow(webMailUrl);
+        WebMailPage.confirmWebMailRegistration();
+        SignUpPage.setPassword(LoginData.password, LoginData.password);
+        expect(ProfilePage.getNewUserAlertText()).toContain('Please add a first name and last name to your profile');
     });
 
     it('create and verify sales', ()=>{
