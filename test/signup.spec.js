@@ -4,11 +4,13 @@ import HomePage from '../Page_Objects/pages/HomePage';
 import {validAccountSignUp,wrongData, facebookLogin} from '../data/credentials';
 describe('Account Registration', () => {
   
-  beforeEach(() => {
-    browser.deleteAllCookies();
-    SignUpPage.open();
+  beforeAll(() => {
+    HomePage.open();
     HomePage.prepareHome();
+  })
 
+  beforeEach(()=>{
+    SignUpPage.open();
   })
 
   it('should Enter valid email to create a new Account ', () => {
@@ -37,7 +39,5 @@ describe('Account Registration', () => {
     SignUpPage.goTOGmail();
     expect(SignUpPage.gmailInputEmail).toBeDisplayed;
   });
-  afterEach(()=>{
-    browser.deleteAllCookies();
-})
+  
 });

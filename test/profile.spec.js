@@ -1,41 +1,46 @@
 import HomePage from "../page_objects/pages/HomePage";
 import LoginPage from "../page_objects/pages/LoginPage";
 import ProfilePage from "../page_objects/pages/ProfilePage";
+import SensoryExperience from "../page_objects/components/SensoryExperience";
 import LoginData from '../data/login.data';
 import ProfileData from '../data/profile.data';
+import RestaurantPage from "../page_objects/pages/RestaurantPage";
+
+function openTestRestaurant() {
+    HomePage.open();
+    HomePage.openTestRestaurant();
+    RestaurantPage.collapseOrder();
+}
 
 describe("User profile test suite", ()=>{
 
-    beforeEach(()=>{
-        LoginPage.open();
+    beforeAll(() => {
+        HomePage.open();
         HomePage.prepareHome();
-        LoginPage.login('jasmin.husadzic@gmail.com', 'test123');
+        LoginPage.open();
+        LoginPage.login(LoginData.email, LoginData.password);
         expect(HomePage.cart).toBeDisplayed;
-        ProfilePage.open();
+        
+        
     });
 
-    afterEach(()=>{
-        if(HomePage.cart.isDisplayed()){
-            ProfilePage.logout();
-        } 
-    });
+    beforeEach(()=>{
+        ProfilePage.open();
+    })
     
     describe("Edit user profile data", ()=>{
 
         it("profile page should contain profile picture", ()=>{
-            ProfilePage.open();
             ProfilePage.waitforProfilePicture();
             expect(ProfilePage.profilePicture).toBeDisplayed;
         })
     
         it("profile page should contain user info", ()=>{
-            ProfilePage.open();
             ProfilePage.waitforUserName();
             expect(ProfilePage.userName).toBeDisplayed;
         })
     
         it("edit first and last name, should be changed on profile page", ()=>{
-            ProfilePage.open();
             ProfilePage.changeNames('Jasmin 2', 'Husadzic 2');
             ProfilePage.waitforUserName();
             expect(ProfilePage.userName.getText()).toContain('Jasmin 2');
@@ -43,14 +48,12 @@ describe("User profile test suite", ()=>{
         })
     
         it("add aditional email and save", ()=>{
-            ProfilePage.open();
             let currentEmails = ProfilePage.countEmails();
             ProfilePage.addAditionalEmail(LoginData.additionalEmail);
             expect(ProfilePage.countEmails()).toEqual(currentEmails + 1);
         })
 
         it("open contact info and edit home address then check is address changed", ()=>{
-            ProfilePage.open();
             ProfilePage.menuComponent.openPersonalInformation();
             ProfilePage.menuComponent.openContactInfo();
             expect(ProfilePage.getContactInfoHeading()).toContain("Home Address");
@@ -62,7 +65,6 @@ describe("User profile test suite", ()=>{
         })
 
         it("check contact preferences by text message checked by default", ()=>{
-            ProfilePage.open();
             ProfilePage.menuComponent.openPersonalInformation();
             ProfilePage.menuComponent.openContactInfo();
             expect(ProfilePage.getContactInfoHeading()).toContain("Home Address");
@@ -71,7 +73,6 @@ describe("User profile test suite", ()=>{
         })
 
         it("check contact preferences by email checked by default", ()=>{
-            ProfilePage.open();
             ProfilePage.menuComponent.openPersonalInformation();
             ProfilePage.menuComponent.openContactInfo();
             expect(ProfilePage.getContactInfoHeading()).toContain("Home Address");
@@ -79,7 +80,6 @@ describe("User profile test suite", ()=>{
         })
 
         it("check contact preferences dont contact me with marketing unchecked by default", ()=>{
-            ProfilePage.open();
             ProfilePage.menuComponent.openPersonalInformation();
             ProfilePage.menuComponent.openContactInfo();
             expect(ProfilePage.getContactInfoHeading()).toContain("Home Address");
@@ -91,7 +91,6 @@ describe("User profile test suite", ()=>{
     describe("Acount history tests", ()=>{
 
         it("navigate to order history url should be correct", ()=>{
-            ProfilePage.open();
             ProfilePage.menuComponent.openMenu();
             ProfilePage.menuComponent.openAccountHistory();
             ProfilePage.menuComponent.openOrderHistory();
@@ -99,7 +98,6 @@ describe("User profile test suite", ()=>{
         })
 
         it("history order type filters should be acivated", ()=>{
-            ProfilePage.open();
             ProfilePage.menuComponent.openMenu();
             ProfilePage.menuComponent.openAccountHistory();
             ProfilePage.menuComponent.openOrderHistory();
@@ -109,7 +107,6 @@ describe("User profile test suite", ()=>{
         })
 
         it("navigate to rating history url shoud be correct", ()=>{
-            ProfilePage.open();
             ProfilePage.menuComponent.openMenu();
             ProfilePage.menuComponent.openAccountHistory();
             ProfilePage.menuComponent.openRatingHistory();
@@ -118,23 +115,48 @@ describe("User profile test suite", ()=>{
 
     })
 
-
-    describe("Dietary preferences tests", ()=>{
+    describe("All preferences tests", () => {
 
         beforeEach(() => {
-            ProfilePage.preparePreferences();
-        })
+            ProfilePage.showAllPreferences();
+        });
 
-        afterEach(() => {
-            ProfilePage.clearDietaryPreferences();
-        })
-        
-        it("Allergy preferences should be set", () => {
+        it ("Allergies are hidden", () => {
             ProfilePage.waitForAllergiesHidden();
+        });
+
+    });
+
+    describe("Dietary preferences tests", () => {
+           
+        beforeEach(() => {
+            ProfilePage.showAllPreferences();
+            ProfilePage.showDietaryPreferences();
+        });
+        
+        // test on 
+        // https://staging.platerate.guru/restaurant/marcello-s-ristorante-suffern-ny
+        it("Allergy preferences should be set and displayed on restaurant menu", () => {
             ProfilePage.setDietaryPreferences();
-            expect(ProfilePage.getMSGPreferenceValue()).toBe('Mostly');
-            expect(ProfilePage.getCrueltyPreferenceValue()).toBe('Mostly');
-            expect(ProfilePage.getFatPreferenceValue()).toBe('Mostly');
+            openTestRestaurant(); 
+            RestaurantPage.checkMeetsPreferences();
+        });
+
+        it('Uncheck all dietary preferences', ()=>{
+            ProfilePage.clearDietaryPreferences();
         });
     });
+    
+    describe("Sensory experience tests", () => {
+
+        beforeEach(() => {
+            ProfilePage.showAllPreferences();
+            SensoryExperience.showSensoryExperience();
+        })
+
+        xit('set the preferences for each experience metric', () => {
+            SensoryExperience.setSensoryExperience();
+        });
+    });
+
 });

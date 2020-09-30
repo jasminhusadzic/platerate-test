@@ -9,12 +9,20 @@ class RestaurantPage extends CommonPage {
     get orderSpinLoader(){return $("//button[contains(@id, 'checkout-or-goto-order')]//i[contains(@class, 'fa fa-refresh fa-spin')]")};
     get myOrderButton(){return $("//button[@id='checkout-or-goto-order']")};
     get viewButton(){return $("(//td/a[contains(text(), 'View')])[1]")};
-    get restaurantInformation(){return $("//div[@id='restaurant-infor']")};
+    get restaurantInformation(){return $("//a[@data-point-to='#restaurant-about']")};
     get restaurantPicture(){return $("#venue-gallery")};
     get restaurantAdministration(){return $("#accordion-restarant-admin")};
     get salePersonButton(){return $("//div[@id='restaurantAdmin']//div[@id='serverDiv2']//button[@name='email_salesperson']")};
-    get firstItem(){return $("(//div[contains(@class, 'order-this-item')])[1]/a")};
+    get setPreferencesPrompt(){return $("//a[contains(text(), 'Set dietary preferences')][1]")};
+    get firstItem(){return $("//div[contains(@class, 'favorite-item')][2]//a[contains(@class, 'order-this-item')]")};
+    get closeOpenOrdersButton() {return $("a[class='close']")};
+    get preferenceNoMSG(){return $("//div[contains(@id, 'collapse-menu-item')][1]//div[contains(text(), 'No MSG' )]")};
+    get preferenceCrueltyFree(){return $("//div[contains(@id, 'collapse-menu-item')][1]//div[contains(text(), 'Cruelty Free' )]")};
+    get preferenceLowFat(){return $("//div[contains(@id, 'collapse-menu-item')][1]//div[contains(text(), 'Low Fat' )]")};
+    get meetsPreferencesButton(){return $(".meet-btn")};
     get menuSearchInput(){return $("#menu-search")};
+    get collapseOrderModal(){return $("#collapseMyOrder")};
+    get restaurantAdminHeading(){return $("(//div[@id='restaurantAdmin']//h2)[1]")}
 
     rateMenuItem(){
         this.waitElementForDisplayed(this.rateItemButton);
@@ -45,6 +53,14 @@ class RestaurantPage extends CommonPage {
         this.waitElementForDisplayed(this.firstItem);
         this.menuSearchInput.scrollIntoView();
         this.firstItem.click();
+    }
+
+    collapseOrder(){
+        try {
+            this.clickElement(this.collapseOrderModal);
+        } catch (e) {
+            console.log("Order is not oppened");
+        }
     }
 
     isElementHidden(){
@@ -94,6 +110,16 @@ class RestaurantPage extends CommonPage {
         return this.salePersonButton.getText();
     }
 
+    preferencesPromptDisplayed() {
+        this.waitElementForDisplayed(this.setPreferencesPrompt);
+    }
+
+    checkMeetsPreferences(){
+        this.clickElement(this.meetsPreferencesButton);
+        this.waitElementForDisplayed(this.preferenceNoMSG);
+        this.waitElementForDisplayed(this.preferenceCrueltyFree);
+        this.waitElementForDisplayed(this.preferenceLowFat);
+    }
 }
 
 export default new RestaurantPage();

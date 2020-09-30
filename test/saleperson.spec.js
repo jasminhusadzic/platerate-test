@@ -2,10 +2,11 @@ import HomePage from "../page_objects/pages/HomePage"
 import LoginPage from "../page_objects/pages/LoginPage";
 import LoginData from '../data/login.data';
 import RestaurantPage from "../page_objects/pages/RestaurantPage";
+import ProfilePage from "../page_objects/pages/ProfilePage";
 
 describe("Saleperson test suite", ()=>{
 
-    beforeEach(()=>{
+    beforeAll(()=>{
         HomePage.open();
         HomePage.prepareHome();
     })
@@ -18,8 +19,9 @@ describe("Saleperson test suite", ()=>{
         })
 
         afterEach(()=>{
-            browser.deleteAllCookies();
-            browser.clearSessionStorage();
+            if(HomePage.cart.isDisplayed()){
+                ProfilePage.logout();
+            }
         })
 
         it("navigate to restaurant administration and check does link is shown - Issue #15148", ()=>{
@@ -29,7 +31,8 @@ describe("Saleperson test suite", ()=>{
             RestaurantPage.clickOnFirstRestaurant();
             RestaurantPage.openRestauranInformation();
             RestaurantPage.openRestaurantAdministration();
-            expect(RestaurantPage.getSalePersonButtonText().length).toBeGreaterThan(0);
+            // git statexpect(RestaurantPage.getSalePersonButtonText().length).toBeGreaterThan(0);
+            expect(RestaurantPage.restaurantAdminHeading.getText()).toContain('List your menu');
         })
     })
 
